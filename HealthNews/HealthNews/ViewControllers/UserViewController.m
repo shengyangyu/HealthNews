@@ -1,23 +1,26 @@
 //
-//  HomeViewController.m
+//  UserViewController.m
 //  HealthNews
 //
 //  Created by yushengyang on 15/4/17.
 //  Copyright (c) 2015年 yushengyang. All rights reserved.
 //
 
-#import "HomeViewController.h"
+#import "UserViewController.h"
 
-@interface HomeViewController ()
+@interface UserViewController ()
 
 @end
 
-@implementation HomeViewController
+@implementation UserViewController
 
 - (void)viewDidLoad {
+    self.isHideLeftItem = YES;
+    self.isShowTabbar = YES;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor redColor];
+    self.view.backgroundColor = [UIColor whiteColor];
+    [self titleLabel:@"个人中心"];
 }
 
 - (void)didReceiveMemoryWarning {

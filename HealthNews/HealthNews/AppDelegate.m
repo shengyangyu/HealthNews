@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "HomeViewController.h"
+#import "CustomerTabBarVC.h"
 
 @interface AppDelegate ()
 
@@ -21,7 +21,7 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
-    self.window.rootViewController = [[HomeViewController alloc] init];
+    self.window.rootViewController = [[CustomerTabBarVC alloc] init];
     [self.window makeKeyAndVisible];
     
     return YES;
