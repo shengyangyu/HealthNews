@@ -281,6 +281,17 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 	[self hide:[animated boolValue]];
 }
 
+- (void)hide:(BOOL)animated afterDelay:(NSTimeInterval)delay dothing:(BOOL)b{
+    [self performSelector:@selector(dohideDelayed:) withObject:[NSNumber numberWithBool:animated] afterDelay:delay];
+}
+
+- (void)dohideDelayed:(NSNumber *)animated {
+    [self hide:[animated boolValue]];
+    if ([delegate respondsToSelector:@selector(HUDdelayDo)]) {
+        [delegate HUDdelayDo];
+    }
+}
+
 #pragma mark - Timer callbacks
 
 - (void)handleGraceTimer:(NSTimer *)theTimer {

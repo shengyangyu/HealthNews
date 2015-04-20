@@ -217,7 +217,7 @@ typedef void (^MBProgressHUDCompletionBlock)();
  * @see animationType
  */
 - (void)hide:(BOOL)animated afterDelay:(NSTimeInterval)delay;
-
+- (void)hide:(BOOL)animated afterDelay:(NSTimeInterval)delay dothing:(BOOL)b;
 /** 
  * Shows the HUD while a background task is executing in a new thread, then hides the HUD.
  *
@@ -450,7 +450,7 @@ typedef void (^MBProgressHUDCompletionBlock)();
  * Called after the HUD was fully hidden from the screen. 
  */
 - (void)hudWasHidden:(MBProgressHUD *)hud;
-
+- (void)HUDdelayDo;
 @end
 
 
