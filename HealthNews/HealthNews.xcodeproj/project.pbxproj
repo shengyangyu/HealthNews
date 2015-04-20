@@ -55,7 +55,6 @@
 		F3A3DF231AE10355008F92B7 /* NSString+HXAddtions.m in Sources */ = {isa = PBXBuildFile; fileRef = F3A3DF221AE10355008F92B7 /* NSString+HXAddtions.m */; };
 		F3A3DF261AE103A4008F92B7 /* AFInterfaceAPIExcute.m in Sources */ = {isa = PBXBuildFile; fileRef = F3A3DF251AE103A4008F92B7 /* AFInterfaceAPIExcute.m */; };
 		F3A3DF291AE10441008F92B7 /* BaseResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F3A3DF281AE10441008F92B7 /* BaseResponse.m */; };
-		F3A3DF2E1AE1099C008F92B7 /* MBProgressHUD+Method.m in Sources */ = {isa = PBXBuildFile; fileRef = F3A3DF2D1AE1099C008F92B7 /* MBProgressHUD+Method.m */; };
 		F3A3DF311AE10E71008F92B7 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3A3DF301AE10E71008F92B7 /* DetailViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -134,8 +133,6 @@
 		F3A3DF271AE10441008F92B7 /* BaseResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseResponse.h; sourceTree = "<group>"; };
 		F3A3DF281AE10441008F92B7 /* BaseResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseResponse.m; sourceTree = "<group>"; };
 		F3A3DF2A1AE10700008F92B7 /* API_Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = API_Header.h; sourceTree = "<group>"; };
-		F3A3DF2C1AE1099C008F92B7 /* MBProgressHUD+Method.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Method.h"; sourceTree = "<group>"; };
-		F3A3DF2D1AE1099C008F92B7 /* MBProgressHUD+Method.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Method.m"; sourceTree = "<group>"; };
 		F3A3DF2F1AE10E71008F92B7 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		F3A3DF301AE10E71008F92B7 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -322,8 +319,6 @@
 				F3A3DF211AE10355008F92B7 /* NSString+HXAddtions.h */,
 				F3A3DF221AE10355008F92B7 /* NSString+HXAddtions.m */,
 				F3A3DF171AE102E0008F92B7 /* JsonExtend */,
-				F3A3DF2C1AE1099C008F92B7 /* MBProgressHUD+Method.h */,
-				F3A3DF2D1AE1099C008F92B7 /* MBProgressHUD+Method.m */,
 			);
 			path = ThirdPart;
 			sourceTree = "<group>";
@@ -488,7 +483,6 @@
 				F3A3DF291AE10441008F92B7 /* BaseResponse.m in Sources */,
 				F3A3DE6C1AE09EDE008F92B7 /* main.m in Sources */,
 				F3A3DEE91AE0D61B008F92B7 /* HomeViewController.m in Sources */,
-				F3A3DF2E1AE1099C008F92B7 /* MBProgressHUD+Method.m in Sources */,
 				F3A3DF151AE0FE2C008F92B7 /* AFRequestManager.m in Sources */,
 				F3A3DEE61AE0D589008F92B7 /* CustomerTabBarVC.m in Sources */,
 			);

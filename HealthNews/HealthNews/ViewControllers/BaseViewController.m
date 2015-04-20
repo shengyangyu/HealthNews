@@ -34,17 +34,19 @@
     [self addBackNavigationButton];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    if (!self.isShowTabbar) {
-        [self.rdv_tabBarController setTabBarHidden:YES animated:YES];
+- (void)viewWillAppear:(BOOL)animated {
+    
+    if (!self.isShowTabbar && self.rdv_tabBarController.tabBar.hidden==NO) {
+        [self.rdv_tabBarController setTabBarHidden:YES];
     }
     [super viewWillAppear:animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    [[self rdv_tabBarController] setTabBarHidden:NO animated:YES];
     
+    if (self.rdv_tabBarController.tabBar.hidden == YES) {
+        [[self rdv_tabBarController] setTabBarHidden:NO];
+    }
     [super viewWillDisappear:animated];
 }
 
@@ -133,7 +135,6 @@
  */
 - (void)pushNewViewController:(NSString *)controllerName
                     isNibPage:(BOOL)isNib
-                setHideTabBar:(BOOL)hideTabBar
                      withData:(NSMutableDictionary *)mData
 {
     if (controllerName.length <= 0)
@@ -154,11 +155,7 @@
             [tmpParams setValuesForKeysWithDictionary:mData];
             [viewCtrl_Page setM_Params:nil];
             [viewCtrl_Page setM_Params:tmpParams];
-        }
-        if (hideTabBar == YES) {
-            [self.rdv_tabBarController setTabBarHidden:YES animated:NO];
-        }
-        
+        }        
         SEL delegateMethod = NSSelectorFromString(@"setM_delegate:");
         if ([viewCtrl_Page respondsToSelector:delegateMethod]) {
 #pragma clang diagnostic push
@@ -166,6 +163,9 @@
             [viewCtrl_Page performSelector:delegateMethod withObject:self];
 #pragma clang diagnostic pop
         }
+        // 保存截图
+        CustomerNaviVC *mNavi = (CustomerNaviVC *)self.navigationController;
+        [mNavi addScreenshot];
         
         [self.navigationController pushViewController:viewCtrl_Page animated:YES];
     }

@@ -8,7 +8,6 @@
 
 #import "CustomerTabBarVC.h"
 #import "RDVTabBarItem.h"
-#import "CustomerNaviVC.h"
 
 #import "HomeViewController.h"
 #import "ReadViewController.h"

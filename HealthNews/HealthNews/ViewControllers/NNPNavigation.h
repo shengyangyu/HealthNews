@@ -17,4 +17,6 @@
     BOOL mFirstTouch;
 }
 
+// 添加截图 手势动画
+- (void)addScreenshot;
 @end

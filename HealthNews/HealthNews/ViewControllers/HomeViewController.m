@@ -46,6 +46,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
 
     cell.textLabel.text = m_muArray[indexPath.row];
@@ -54,7 +55,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self pushNewViewController:@"DetailViewController" isNibPage:NO setHideTabBar:YES withData:nil];
+    [self pushNewViewController:@"DetailViewController" isNibPage:NO withData:nil];
 }
 
 - (void)didReceiveMemoryWarning {

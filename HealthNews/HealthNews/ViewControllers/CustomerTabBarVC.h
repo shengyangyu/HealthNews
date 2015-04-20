@@ -7,9 +7,11 @@
 //
 
 #import "RDVTabBarController.h"
+#import "CustomerNaviVC.h"
 
 @interface CustomerTabBarVC : RDVTabBarController
 
+// 初始化rootview
 - (void)initWithRootViewController;
 
 @end

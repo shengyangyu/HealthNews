@@ -9,6 +9,7 @@
 #import "NNPNavigation.h"
 #import <QuartzCore/QuartzCore.h>
 #import <math.h>
+#import "CustomerTabBarVC.h"
 
 @interface NNPNavigation ()<UIGestureRecognizerDelegate>
 {
@@ -45,25 +46,74 @@
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
-    [self.mScreenShotsList addObject:[self capture]];
     [super pushViewController:viewController animated:animated];
 }
 
 - (UIViewController *)popViewControllerAnimated:(BOOL)animated
 {
-    [self.mScreenShotsList removeLastObject];
-    return [super popViewControllerAnimated:animated];
+    CGRect frame = [UIScreen mainScreen].bounds;
+    [self.mBackgroundView removeFromSuperview];
+    self.mBackgroundView = nil;
+    // 初始化
+    if (!self.mBackgroundView) {
+        self.mBackgroundView = [[UIView alloc]initWithFrame:CGRectMake(-frame.size.width, 0, frame.size.width , frame.size.height)];
+        [self.view.superview insertSubview:self.mBackgroundView belowSubview:self.view];
+        // 灰色背景
+        mBlackMask = [[UIView alloc]initWithFrame:CGRectMake(0, 0, frame.size.width , frame.size.height)];
+        mBlackMask.backgroundColor = [UIColor grayColor];
+        [self.mBackgroundView addSubview:mBlackMask];
+        self.mBackgroundView.hidden = NO;
+        // 顶部VC 截图
+        if (mLastScreenShotView)
+            [mLastScreenShotView removeFromSuperview];
+        @try {
+            UIImage *lastScreenShot = [self.mScreenShotsList lastObject];
+            mLastScreenShotView = [[UIImageView alloc]initWithImage:lastScreenShot];
+            [mLastScreenShotView setFrame:frame];
+            [self.mBackgroundView insertSubview:mLastScreenShotView belowSubview:mBlackMask];
+        }
+        @catch (NSException *exception) {
+        }
+        // 设置锚点
+        CALayer *layer = [self.mBackgroundView layer];
+        CGPoint oldAnchorPoint = layer.anchorPoint;
+        [layer setAnchorPoint:CGPointMake(0.5, 1.0)];
+        [layer setPosition:CGPointMake(layer.position.x + layer.bounds.size.width * (layer.anchorPoint.x - oldAnchorPoint.x), layer.position.y + layer.bounds.size.height * (layer.anchorPoint.y - oldAnchorPoint.y))];
+    }
+    [UIView animateWithDuration:0.5 animations:^{
+        [self moveViewWithX:NNPViewWidth];
+        CGRect frame = self.view.bounds;
+        frame.origin.x = NNPViewWidth;
+        [self.view setFrame:frame];
+    } completion:^(BOOL finished){
+        CATransform3D transform = CATransform3DIdentity;
+        [self.view.layer setTransform:transform];
+        [self.mBackgroundView.layer setTransform:transform];
+        CGRect frame = [UIScreen mainScreen].bounds;
+        frame.origin.x = 0;
+        self.view.frame = frame;
+        _mIsMoving = NO;
+        [self.mScreenShotsList removeLastObject];
+        [super popViewControllerAnimated:NO];
+    }];
+    return nil;
+}
+
+#pragma mark - 添加截图 手势动画
+- (void)addScreenshot
+{
+    [self.mScreenShotsList addObject:[self capture]];
 }
 
 #pragma mark - Utility Methods -
 
 - (UIImage *)capture
 {
-    UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, self.view.opaque, 0.0);
-    [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIView *mView = self.rdv_tabBarController.view;
     
+    UIGraphicsBeginImageContextWithOptions(mView.bounds.size, mView.opaque, 0.0);
+    [mView.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
-    
     UIGraphicsEndImageContext();
     
     return img;
@@ -75,9 +125,12 @@
         return;
     }
     float balpha = x < 0 ? -x : x;
-    CATransform3D transform = CATransform3DIdentity;
-    transform = CATransform3DMakeTranslation(x, 0, 0);
-    [self.view.layer setTransform:transform];
+    CATransform3D transform1 = CATransform3DIdentity;
+    transform1 = CATransform3DMakeTranslation(x, 0, 0);
+    [self.view.layer setTransform:transform1];
+    CATransform3D transform2 = CATransform3DIdentity;
+    transform2 = CATransform3DMakeTranslation(x, 0, 0);
+    [self.mBackgroundView.layer setTransform:transform2];
     float alpha = 0.4 - (balpha/800);
     mBlackMask.alpha = alpha;
     
@@ -106,18 +159,10 @@
     if (self.viewControllers.count <= 1) {
         return;
     }
-
+    
     CGPoint touchPoint = [recoginzer locationInView:NNPKEY_WINDOW];
     if (recoginzer.state == UIGestureRecognizerStateBegan) {
-    
-        // 设置锚点
-        if (mFirstTouch) {
-            CALayer *layer = [self.view layer];
-            CGPoint oldAnchorPoint = layer.anchorPoint;
-            [layer setAnchorPoint:CGPointMake(0.5, 1.0)];
-            [layer setPosition:CGPointMake(layer.position.x + layer.bounds.size.width * (layer.anchorPoint.x - oldAnchorPoint.x), layer.position.y + layer.bounds.size.height * (layer.anchorPoint.y - oldAnchorPoint.y))];
-            mFirstTouch = NO;
-        }
+        
         _mIsMoving = YES;
         mStartTouch = touchPoint;
         CGRect frame = [UIScreen mainScreen].bounds;
@@ -126,25 +171,37 @@
         self.mBackgroundView = nil;
         // 初始化
         if (!self.mBackgroundView) {
-            self.mBackgroundView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, frame.size.width , frame.size.height)];
+            self.mBackgroundView = [[UIView alloc]initWithFrame:CGRectMake(-frame.size.width, 0, frame.size.width , frame.size.height)];
             [self.view.superview insertSubview:self.mBackgroundView belowSubview:self.view];
             // 灰色背景
             mBlackMask = [[UIView alloc]initWithFrame:CGRectMake(0, 0, frame.size.width , frame.size.height)];
             mBlackMask.backgroundColor = [UIColor blackColor];
             [self.mBackgroundView addSubview:mBlackMask];
-       }
-        
-        self.mBackgroundView.hidden = NO;
-        // 顶部VC 截图
-        if (mLastScreenShotView)
-            [mLastScreenShotView removeFromSuperview];
-        @try {
-            UIImage *lastScreenShot = [self.mScreenShotsList lastObject];
-            mLastScreenShotView = [[UIImageView alloc]initWithImage:lastScreenShot];
-            [mLastScreenShotView setFrame:frame];
-            [self.mBackgroundView insertSubview:mLastScreenShotView belowSubview:mBlackMask];
+            self.mBackgroundView.hidden = NO;
+            // 顶部VC 截图
+            if (mLastScreenShotView)
+                [mLastScreenShotView removeFromSuperview];
+            @try {
+                UIImage *lastScreenShot = [self.mScreenShotsList lastObject];
+                mLastScreenShotView = [[UIImageView alloc]initWithImage:lastScreenShot];
+                [mLastScreenShotView setFrame:frame];
+                [self.mBackgroundView insertSubview:mLastScreenShotView belowSubview:mBlackMask];
+            }
+            @catch (NSException *exception) {
+            }
+            // 设置锚点
+            CALayer *layer = [self.mBackgroundView layer];
+            CGPoint oldAnchorPoint = layer.anchorPoint;
+            [layer setAnchorPoint:CGPointMake(0.5, 1.0)];
+            [layer setPosition:CGPointMake(layer.position.x + layer.bounds.size.width * (layer.anchorPoint.x - oldAnchorPoint.x), layer.position.y + layer.bounds.size.height * (layer.anchorPoint.y - oldAnchorPoint.y))];
         }
-        @catch (NSException *exception) {
+        // 设置锚点
+        if (mFirstTouch) {
+            CALayer *layer = [self.view layer];
+            CGPoint oldAnchorPoint = layer.anchorPoint;
+            [layer setAnchorPoint:CGPointMake(0.5, 1.0)];
+            [layer setPosition:CGPointMake(layer.position.x + layer.bounds.size.width * (layer.anchorPoint.x - oldAnchorPoint.x), layer.position.y + layer.bounds.size.height * (layer.anchorPoint.y - oldAnchorPoint.y))];
+            mFirstTouch = NO;
         }
         
     }else if (recoginzer.state == UIGestureRecognizerStateEnded){
@@ -183,18 +240,19 @@
 - (void)popMethod
 {
     [UIView animateWithDuration:0.4 animations:^{
-        [self moveViewWithX:NNPViewWidth*2];
+        [self moveViewWithX:NNPViewWidth];
         CGRect frame = self.view.bounds;
         frame.origin.x = NNPViewWidth;
         [self.view setFrame:frame];
     } completion:^(BOOL finished){
-        [self popViewControllerAnimated:NO];
         CATransform3D transform = CATransform3DIdentity;
         [self.view.layer setTransform:transform];
+        [self.mBackgroundView.layer setTransform:transform];
         CGRect frame = [UIScreen mainScreen].bounds;
         frame.origin.x = 0;
         self.view.frame = frame;
         _mIsMoving = NO;
+        [super popViewControllerAnimated:NO];
     }];
 }
 

@@ -10,7 +10,7 @@
 #import "HNHeaderFile.h"
 #import "CustomerTabBarVC.h"
 #import "API_Header.h"
-#import "MBProgressHUD+Method.h"
+#import "MBProgressHUD.h"
 #import "AFInterfaceAPIExcute.h"
 
 @interface BaseViewController : UIViewController<MBProgressHUDDelegate,AFInterfaceAPIDelegate>
@@ -28,12 +28,10 @@
  push界面方法
  controllerName:控制器名称
  isNib:是否为xib初始化
- hideTabBar:是否隐藏tabbar
  mData:传递值
  */
 - (void)pushNewViewController:(NSString *)controllerName
                     isNibPage:(BOOL)isNib
-                setHideTabBar:(BOOL)hideTabBar
                      withData:(NSMutableDictionary *)mData;
 /**
  请求加载动画
