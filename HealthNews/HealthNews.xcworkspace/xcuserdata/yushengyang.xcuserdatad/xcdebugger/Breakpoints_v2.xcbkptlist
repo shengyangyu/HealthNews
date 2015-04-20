@@ -6,32 +6,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HealthNews/ViewControllers/AFRequestManager.m"
-            timestampString = "450956535.65545"
+            filePath = "HealthNews/ViewControllers/AFInterfaceAPIExcute.m"
+            timestampString = "451213631.253644"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
-            landmarkName = "+httpRequest:extraParams:className:object:action:operation:"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "-backCall:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HealthNews/ViewControllers/AFRequestManager.m"
-            timestampString = "450956535.65545"
+            filePath = "HealthNews/ViewControllers/HomeViewController.m"
+            timestampString = "451216173.637846"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
-            landmarkName = "+httpRequest:className:object:action:operation:"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

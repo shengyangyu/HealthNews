@@ -100,7 +100,6 @@
             params:(NSMutableDictionary*) _paras
 {
     api = [[AFInterfaceAPIExcute alloc] initWithAPI:_apiUrl retClass:_className Params:_paras setDelegate:self] ;
-    [api setDelegate:self];
     [api beginRequest];
 }
 - (void)interfaceExcuteError:(NSError *)error apiName:(NSString *)ApiName

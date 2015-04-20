@@ -30,7 +30,7 @@
         else
             [mutableArray addObject:[obj objectToDictionary]];
     }
-    return mutableArray;
+    return [mutableArray autorelease];
 
 }
 
@@ -56,7 +56,7 @@
         [mutableArray addObject:obj];
         
     }
-    return mutableArray;
+    return [mutableArray autorelease];
 }
 
 @end

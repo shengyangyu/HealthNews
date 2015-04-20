@@ -29,6 +29,10 @@ static const char *GenericTypeKey = "genericTypeKey";
         NSString *ivarType = [NSString stringWithCString:ivarCType encoding:NSUTF8StringEncoding];
         
         
+//        NSLog(ivarName);
+//        NSLog(ivarType);
+//        NSLog(@"%@",[self valueForKey:ivarName]);
+        
         id value = nil;
         //if ivarType equal to NSArray, convert it. 
         if ([ivarType compare:@"@\"NSArray\""] == NSOrderedSame)
@@ -52,7 +56,7 @@ static const char *GenericTypeKey = "genericTypeKey";
         
     }
     free(ivars);
-    return dictionary;
+    return [dictionary autorelease];
 }
 
 + (void) setGenericType: (NSDictionary* )type

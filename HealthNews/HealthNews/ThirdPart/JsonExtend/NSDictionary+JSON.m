@@ -8,7 +8,6 @@
 
 #import "NSDictionary+JSON.h"
 
-
 @implementation NSDictionary (JSON)
 
 - (id) dictionaryTo:(Class) responseType
@@ -27,8 +26,8 @@
         NSString *ivarName = [NSString stringWithCString:ivarCName encoding:NSUTF8StringEncoding];
         NSString *ivarType = [NSString stringWithCString:ivarCType encoding:NSUTF8StringEncoding];
         
-        id value = [self valueForKey:[ivarName isEqualToString:@"_id"] ? @"id" : ivarName];
-       
+        id value = [self valueForKey:[ivarName isEqualToString:@"mId"] ? @"id" : ivarName];
+        
         if([value isKindOfClass:[NSString class]] ||
            [value isKindOfClass:[NSNumber class]] ||
            value == nil);
@@ -54,13 +53,12 @@
         
         // set the value into object
         if (value!=nil) {
-            
             [object setValue:value forKey:ivarName];
         }
 
     }
     free(ivars);
-    return object;
+    return [object autorelease];
         
 }
     

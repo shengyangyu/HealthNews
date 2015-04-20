@@ -9,5 +9,6 @@
 #ifndef HealthNews_API_Header_h
 #define HealthNews_API_Header_h
 
+#define API_NewsTypeList @"news/newsclass" //资讯分类列表
 
 #endif

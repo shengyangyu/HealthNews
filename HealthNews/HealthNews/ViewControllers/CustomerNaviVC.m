@@ -38,7 +38,6 @@
 - (void)enteredForeground
 {
     [self viewWillAppear:NO];
-    //[self viewDidAppear:NO];
 }
 
 - (void)viewWillAppear:(BOOL)animated

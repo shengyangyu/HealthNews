@@ -83,7 +83,7 @@
 
 - (void)backCall:(id)jsonObject
 {
-    BaseResponse* retObj = (BaseResponse*)jsonObject;
+    HNNewsListClass* retObj = (HNNewsListClass*)jsonObject;
     
     NSLog(@"api=%@",m_apiName);
     
@@ -91,7 +91,7 @@
         [self failWithErrorText:@"数据为空"];
         return;
     }
-    else if (![retObj.success boolValue]) {
+    else if (!retObj.success || ![retObj.success boolValue]) {
         
         [self failWithErrorText:@"请求错误!"];
     }
@@ -103,7 +103,7 @@
 // 不带returncode的网络回调处理
 - (void)backCallNotReturnCode:(id)jsonObject
 {
-    BaseResponse* retObj = (BaseResponse*)jsonObject;
+    HNNewsListClass* retObj = (HNNewsListClass*)jsonObject;
     
     if (retObj == nil) {
         [self failWithErrorText:@""];

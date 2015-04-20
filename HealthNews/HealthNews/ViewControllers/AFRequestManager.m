@@ -23,12 +23,12 @@ static NSMutableArray *infoArray;
     NSDictionary* dic = nil;
     //NSLog(@"json--->%@",jsonStr);
     double version = [[UIDevice currentDevice].systemVersion doubleValue];//判定系统版本。
-    if(version>=5.0f){
+    if(version >= 5.0f){
         NSData *jsonData = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
         
         NSError *error = nil;
         
-        dic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableLeaves  error:&error];
+        dic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableLeaves error:&error];
     }
     else
     {
@@ -43,6 +43,17 @@ static NSMutableArray *infoArray;
 
 /*
  JSON 解析函数
+ param: clsName为解析后，所要得到的class类型名
+ */
++(id)decodeJsonDic:(NSDictionary *)jsonDic withClsName:(NSString*)clsName
+{
+    Class retClass = NSClassFromString(clsName);
+    retClass = [jsonDic dictionaryTo:retClass];
+    return retClass;
+}
+
+/*
+ JSON 解析函数
  param: clsName为解析后，所要得到的class类型名。不带returncode的，为做表情特殊处理的
  */
 +(id)decodeJsonStrNotReturnCode:(NSString*)jsonStr withClsName:(NSString*)clsName
@@ -50,7 +61,7 @@ static NSMutableArray *infoArray;
     NSDictionary* dic = nil;
     //NSLog(@"json--->%@",jsonStr);
     double version = [[UIDevice currentDevice].systemVersion doubleValue];//判定系统版本。
-    if(version>=5.0f){
+    if(version >= 5.0f){
         NSData *jsonData = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
         
         NSError *error = nil;
@@ -100,21 +111,21 @@ static NSMutableArray *infoArray;
     __weak id _object = object;
     op = [client POST:urlString parameters:extraParams success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-        NSString *tmpJason;
-        //= [NSString jsonStringWithObject:responseObject];
-        if (tmpJason == nil) {
-            [_object performSelector:@selector(failWithErrorText:) withObject:@"返回数据为空"];
-                  return ;
+        NSString *tmpJason = [NSString jsonStringWithObject:responseObject];
+        SEL failedMethod = NSSelectorFromString(@"failWithErrorText:");
+        if (tmpJason == nil && [_object respondsToSelector:failedMethod]) {
+            SUPPRESS_PERFORM_SELECTOR_LEAK_WARNING([_object performSelector:failedMethod withObject:@"返回数据为空"]; return; );
         }
-        SUPPRESS_PERFORM_SELECTOR_LEAK_WARNING(
-            if ([_object respondsToSelector:action]) {
-                  [_object performSelector:action withObject:[AFRequestManager  decodeJsonStr:tmpJason  withClsName:className]];
-              }
-            );
-              
-          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-              if ([_object respondsToSelector:@selector(failWithErrorText:)]){ [_object performSelector:@selector(failWithErrorText:) withObject:@"请求异常"];}
-          }];
+        if ([_object respondsToSelector:action]) {
+            SUPPRESS_PERFORM_SELECTOR_LEAK_WARNING([_object performSelector:action withObject:[AFRequestManager decodeJsonStr:tmpJason withClsName:className]];);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        SEL failedMethod = NSSelectorFromString(@"failWithErrorText:");
+        if ([_object respondsToSelector:failedMethod]) {
+            SUPPRESS_PERFORM_SELECTOR_LEAK_WARNING( [_object performSelector:failedMethod withObject:@"请求异常"]; return ; );
+        }
+    }];
     
     return op;
 }
@@ -146,21 +157,22 @@ static NSMutableArray *infoArray;
     }else
         [client.requestSerializer setValue:@"" forHTTPHeaderField:(NSString *)HEAD_KEY_UUID];
     */
-     NSString *urlString = [NSString stringWithFormat:@"http://%@/%@",kServiceUrl,url];
-    
-    op = [client GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject)
-          {
-              NSString * tmpJason;
-              //= [NSString jsonStringWithObject:responseObject];
-              if (tmpJason == nil) {
-                  [object performSelector:@selector(failWithErrorText:) withObject:@"数据为空"];
-              }
-              SUPPRESS_PERFORM_SELECTOR_LEAK_WARNING( if([object respondsToSelector:action]){ [object performSelector:action withObject:[AFRequestManager decodeJsonStrNotReturnCode:tmpJason  withClsName:className]];});
-              
-          } failure:^(AFHTTPRequestOperation *operation, NSError *error)
-          {
-              [object performSelector:@selector(failWithErrorText:) withObject:@"请求异常"];
-          }];
+    NSString *urlString = [NSString stringWithFormat:@"http://%@/%@",kServiceUrl,url];
+    op = [client GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+            NSString *tmpJason = [NSString jsonStringWithObject:responseObject];
+            SEL failedMethod = NSSelectorFromString(@"failWithErrorText:");
+            if (tmpJason == nil && [object respondsToSelector:failedMethod]) {
+                SUPPRESS_PERFORM_SELECTOR_LEAK_WARNING([object performSelector:failedMethod withObject:@"数据为空"];);
+            }
+            if([object respondsToSelector:action]){
+                SUPPRESS_PERFORM_SELECTOR_LEAK_WARNING([object performSelector:action withObject:[AFRequestManager decodeJsonStr:tmpJason withClsName:className]];);
+            }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              SEL failedMethod = NSSelectorFromString(@"failWithErrorText:");
+              SUPPRESS_PERFORM_SELECTOR_LEAK_WARNING([object performSelector:failedMethod withObject:@"请求异常"];);
+    }];
 }
 
 

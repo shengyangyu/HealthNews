@@ -7,16 +7,34 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NSDictionary+JSON.h"
 
-@interface BaseResponse : NSObject
+//*****************资讯分类*****************//
+/*
+ *  资讯分类列表类
+ */
+@interface HNNewsListClass : NSObject
 {
     NSString *success;
     NSString *total;
-    NSString *yi18;
+    NSMutableArray *yi18;
 }
 
 @property(nonatomic,retain) NSString *success;
 @property(nonatomic,retain) NSString *total;
-@property(nonatomic,retain) NSString *yi18;
+@property(nonatomic,retain) NSMutableArray *yi18;
+
+@end
+
+/*
+ *  资讯分类列表详细类
+ */
+@interface HNNewsClass : NSObject
+{
+    NSString *name;
+    NSString *mId;
+}
+@property(nonatomic,retain) NSString *name;
+@property(nonatomic,retain) NSString *mId;
 
 @end

@@ -9,5 +9,8 @@
 #import "BaseTableViewController.h"
 
 @interface HomeViewController : BaseTableViewController
+{
+    AFInterfaceAPIExcute *apiInter;//数据请求
+}
 
 @end
