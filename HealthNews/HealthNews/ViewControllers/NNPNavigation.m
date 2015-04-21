@@ -51,12 +51,34 @@
 
 - (UIViewController *)popViewControllerAnimated:(BOOL)animated
 {
+    [self resetImageView];
+    [UIView animateWithDuration:0.5 animations:^{
+        [self moveViewWithX:NNPViewWidth];
+        CGRect frame = self.view.bounds;
+        frame.origin.x = NNPViewWidth;
+        [self.view setFrame:frame];
+    } completion:^(BOOL finished){
+        CATransform3D transform = CATransform3DIdentity;
+        [self.view.layer setTransform:transform];
+        [self.mBackgroundView.layer setTransform:transform];
+        CGRect frame = [UIScreen mainScreen].bounds;
+        frame.origin.x = 0;
+        self.view.frame = frame;
+        _mIsMoving = NO;
+        [self.mScreenShotsList removeLastObject];
+        [super popViewControllerAnimated:NO];
+    }];
+    return nil;
+}
+
+- (void)resetImageView
+{
     CGRect frame = [UIScreen mainScreen].bounds;
     [self.mBackgroundView removeFromSuperview];
     self.mBackgroundView = nil;
     // 初始化
     if (!self.mBackgroundView) {
-        self.mBackgroundView = [[UIView alloc]initWithFrame:CGRectMake(-frame.size.width, 0, frame.size.width , frame.size.height)];
+        self.mBackgroundView = [[UIView alloc]initWithFrame:CGRectMake(-frame.size.width/2, 0, frame.size.width , frame.size.height)];
         [self.view.superview insertSubview:self.mBackgroundView belowSubview:self.view];
         // 灰色背景
         mBlackMask = [[UIView alloc]initWithFrame:CGRectMake(0, 0, frame.size.width , frame.size.height)];
@@ -80,23 +102,6 @@
         [layer setAnchorPoint:CGPointMake(0.5, 1.0)];
         [layer setPosition:CGPointMake(layer.position.x + layer.bounds.size.width * (layer.anchorPoint.x - oldAnchorPoint.x), layer.position.y + layer.bounds.size.height * (layer.anchorPoint.y - oldAnchorPoint.y))];
     }
-    [UIView animateWithDuration:0.5 animations:^{
-        [self moveViewWithX:NNPViewWidth];
-        CGRect frame = self.view.bounds;
-        frame.origin.x = NNPViewWidth;
-        [self.view setFrame:frame];
-    } completion:^(BOOL finished){
-        CATransform3D transform = CATransform3DIdentity;
-        [self.view.layer setTransform:transform];
-        [self.mBackgroundView.layer setTransform:transform];
-        CGRect frame = [UIScreen mainScreen].bounds;
-        frame.origin.x = 0;
-        self.view.frame = frame;
-        _mIsMoving = NO;
-        [self.mScreenShotsList removeLastObject];
-        [super popViewControllerAnimated:NO];
-    }];
-    return nil;
 }
 
 #pragma mark - 添加截图 手势动画
@@ -129,7 +134,7 @@
     transform1 = CATransform3DMakeTranslation(x, 0, 0);
     [self.view.layer setTransform:transform1];
     CATransform3D transform2 = CATransform3DIdentity;
-    transform2 = CATransform3DMakeTranslation(x, 0, 0);
+    transform2 = CATransform3DMakeTranslation(x/2, 0, 0);
     [self.mBackgroundView.layer setTransform:transform2];
     float alpha = 0.4 - (balpha/800);
     mBlackMask.alpha = alpha;
@@ -165,36 +170,7 @@
         
         _mIsMoving = YES;
         mStartTouch = touchPoint;
-        CGRect frame = [UIScreen mainScreen].bounds;
-        
-        [self.mBackgroundView removeFromSuperview];
-        self.mBackgroundView = nil;
-        // 初始化
-        if (!self.mBackgroundView) {
-            self.mBackgroundView = [[UIView alloc]initWithFrame:CGRectMake(-frame.size.width, 0, frame.size.width , frame.size.height)];
-            [self.view.superview insertSubview:self.mBackgroundView belowSubview:self.view];
-            // 灰色背景
-            mBlackMask = [[UIView alloc]initWithFrame:CGRectMake(0, 0, frame.size.width , frame.size.height)];
-            mBlackMask.backgroundColor = [UIColor blackColor];
-            [self.mBackgroundView addSubview:mBlackMask];
-            self.mBackgroundView.hidden = NO;
-            // 顶部VC 截图
-            if (mLastScreenShotView)
-                [mLastScreenShotView removeFromSuperview];
-            @try {
-                UIImage *lastScreenShot = [self.mScreenShotsList lastObject];
-                mLastScreenShotView = [[UIImageView alloc]initWithImage:lastScreenShot];
-                [mLastScreenShotView setFrame:frame];
-                [self.mBackgroundView insertSubview:mLastScreenShotView belowSubview:mBlackMask];
-            }
-            @catch (NSException *exception) {
-            }
-            // 设置锚点
-            CALayer *layer = [self.mBackgroundView layer];
-            CGPoint oldAnchorPoint = layer.anchorPoint;
-            [layer setAnchorPoint:CGPointMake(0.5, 1.0)];
-            [layer setPosition:CGPointMake(layer.position.x + layer.bounds.size.width * (layer.anchorPoint.x - oldAnchorPoint.x), layer.position.y + layer.bounds.size.height * (layer.anchorPoint.y - oldAnchorPoint.y))];
-        }
+        [self resetImageView];
         // 设置锚点
         if (mFirstTouch) {
             CALayer *layer = [self.view layer];

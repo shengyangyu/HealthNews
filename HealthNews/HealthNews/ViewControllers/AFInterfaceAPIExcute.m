@@ -83,7 +83,7 @@
 
 - (void)backCall:(id)jsonObject
 {
-    HNNewsListClass* retObj = (HNNewsListClass*)jsonObject;
+    HNBsae* retObj = (HNBsae*)jsonObject;
     
     NSLog(@"api=%@",m_apiName);
     
@@ -103,7 +103,7 @@
 // 不带returncode的网络回调处理
 - (void)backCallNotReturnCode:(id)jsonObject
 {
-    HNNewsListClass* retObj = (HNNewsListClass*)jsonObject;
+    HNBsae* retObj = (HNBsae*)jsonObject;
     
     if (retObj == nil) {
         [self failWithErrorText:@""];
