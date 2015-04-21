@@ -36,7 +36,8 @@ yi18;
 
 @implementation HNNewsType
 @synthesize name,
-            mId;
+mId;
+
 @end
 
 
@@ -48,9 +49,9 @@ yi18;
 - (NSMutableArray *)yi18
 {
     for (int i = 0; i < yi18.count; i++) {
-        if([[yi18 objectAtIndex:i] class] != [HNNews class]) {
+        if([[yi18 objectAtIndex:i] class] != [HNNewsDetail class]) {
             NSDictionary * _dic = (NSDictionary *)[yi18 objectAtIndex:i];
-            [yi18 replaceObjectAtIndex:i withObject:[_dic dictionaryTo:NSClassFromString(@"HNNews")]];
+            [yi18 replaceObjectAtIndex:i withObject:[_dic dictionaryTo:NSClassFromString(@"HNNewsDetail")]];
         }
     }
     return yi18;
@@ -58,17 +59,28 @@ yi18;
 
 @end
 
-@implementation HNNews
+
+@implementation HNNewsDetail
 
 @synthesize title,
 tag,
+message,
 count,
 fcount,
 rcount,
 author,
 focal,
-md,
 time,
-mId;
+mId,
+img,
+md;
 
 @end
+
+@implementation HNNewsDetailBase
+
+@synthesize success,
+yi18;
+
+@end
+

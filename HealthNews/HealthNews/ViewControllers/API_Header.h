@@ -11,7 +11,7 @@
 
 #define API_NewsTypeList    @"news/newsclass"  //资讯分类列表
 #define API_NewsList        @"news/list"       //资讯列表
-
+#define API_NewsDetail      @"news/show"       //资讯详情
 
 
 

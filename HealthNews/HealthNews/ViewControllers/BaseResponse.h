@@ -74,31 +74,49 @@
 
 @end
 
-/*
- *  资讯信息类
+/*  公用
+ *  资讯信息类、资讯信息详情类
  */
-@interface HNNews : NSObject
+@interface HNNewsDetail : NSObject
 {
     NSString *title;
     NSString *tag;
+    NSString *message;
     NSString *count;
     NSString *fcount;
     NSString *rcount;
     NSString *author;
     NSString *focal;
-    NSString *md;
     NSString *time;
     NSString *mId;
+    NSString *img;
+    NSString *md;
 }
 @property(nonatomic,retain) NSString *title;
 @property(nonatomic,retain) NSString *tag;
+@property(nonatomic,retain) NSString *message;
 @property(nonatomic,retain) NSString *count;
 @property(nonatomic,retain) NSString *fcount;
 @property(nonatomic,retain) NSString *rcount;
 @property(nonatomic,retain) NSString *author;
 @property(nonatomic,retain) NSString *focal;
-@property(nonatomic,retain) NSString *md;
 @property(nonatomic,retain) NSString *time;
 @property(nonatomic,retain) NSString *mId;
+@property(nonatomic,retain) NSString *img;
+@property(nonatomic,retain) NSString *md;
+
+@end
+
+/*
+ *  资讯详情类
+ */
+@interface HNNewsDetailBase : NSObject
+{
+    NSString *success;
+    HNNewsDetail *yi18;
+}
+
+@property(nonatomic,retain) NSString *success;
+@property(nonatomic,retain) HNNewsDetail *yi18;
 
 @end

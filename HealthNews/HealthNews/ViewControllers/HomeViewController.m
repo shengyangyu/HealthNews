@@ -27,10 +27,10 @@
     self.isShowTabbar = YES;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor redColor];
+    self.view.backgroundColor = [UIColor whiteColor];
     [self titleLabel:@"健康资讯"];
     [self initTableView];
-
+    [self HUDShow:@"加载中"];
     [self requestType];
 }
 
@@ -53,19 +53,17 @@
 }
 
 -(void)initTableView{
-    [self addTableView:CGRectMake(0, 0, __MainScreen_Width, __viewContent_hight3) withStyle:UITableViewStylePlain withType:ULE_TableViewTypeAll parent:self.view];
+    [self addTableView:CGRectMake(0, 0, __MainScreen_Width, __viewContent_hight3) withStyle:UITableViewStylePlain withType:ULE_TableViewTypeNone parent:self.view];
     //[self hideEmptySeparators];
 }
 
 #pragma mark - request
 - (void)requestType {
-    [self HUDShow:@"加载中"];
     apiType = [[AFInterfaceAPIExcute alloc] initWithAPI:API_NewsTypeList retClass:@"HNNewsTypeList" Params:nil setDelegate:self] ;
     [apiType beginRequest];
 }
 
 - (void)requestNews {
-    [self HUDShow:@"加载中"];
     @try {
         HNNewsType *mclass = (HNNewsType *)mTypeArray[0];
         NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithDictionary:
@@ -101,14 +99,22 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    HNNews *mclass = (HNNews *)m_muArray[indexPath.row];
+    HNNewsDetail *mclass = (HNNewsDetail *)m_muArray[indexPath.row];
     cell.textLabel.text = mclass.title;
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self pushNewViewController:@"DetailViewController" isNibPage:NO withData:nil];
+    @try {
+        HNNewsDetail *mclass = (HNNewsDetail *)m_muArray[indexPath.row];
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+        [dic setObject:mclass.mId forKey:@"id"];
+        [self pushNewViewController:@"DetailViewController" isNibPage:NO withData:dic];
+    }
+    @catch (NSException *exception) {
+        [self HUDShow:@"获取详情错误!" delay:kShowTitleAfterDelay];
+    }
 }
 
 #pragma mark - AFInterfaceAPIDelegate
