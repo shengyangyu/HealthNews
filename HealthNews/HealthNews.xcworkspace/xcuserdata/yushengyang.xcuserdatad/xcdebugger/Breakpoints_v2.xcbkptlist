@@ -9,13 +9,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HealthNews/ViewControllers/AFInterfaceAPIExcute.m"
-            timestampString = "451213631.253644"
+            filePath = "HealthNews/ViewControllers/AFRequestManager.m"
+            timestampString = "451361032.314143"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
-            landmarkName = "-backCall:"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "+httpRequest:extraParams:className:object:action:operation:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HealthNews/ViewControllers/HomeViewController.m"
-            timestampString = "451216173.637846"
+            filePath = "HealthNews/ViewControllers/DetailViewController.m"
+            timestampString = "451386638.0631"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "-interfaceExcuteSuccess:apiName:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -7,6 +7,7 @@
 //
 
 #import <Availability.h>
+#import "UIColor+ColorUtility.h"
 
 #ifndef HealthNews_HealthNews_Prefix_pch
 #define HealthNews_HealthNews_Prefix_pch

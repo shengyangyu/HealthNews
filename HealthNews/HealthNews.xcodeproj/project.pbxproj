@@ -56,6 +56,9 @@
 		F3A3DF261AE103A4008F92B7 /* AFInterfaceAPIExcute.m in Sources */ = {isa = PBXBuildFile; fileRef = F3A3DF251AE103A4008F92B7 /* AFInterfaceAPIExcute.m */; };
 		F3A3DF291AE10441008F92B7 /* BaseResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F3A3DF281AE10441008F92B7 /* BaseResponse.m */; };
 		F3A3DF311AE10E71008F92B7 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3A3DF301AE10E71008F92B7 /* DetailViewController.m */; };
+		F3A57CEA1AE78018008AA4CB /* HomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F3A57CE91AE78018008AA4CB /* HomeCell.m */; };
+		F3A57CF01AE7864E008AA4CB /* hc_cell_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3A57CEF1AE7864E008AA4CB /* hc_cell_icon@2x.png */; };
+		F3A57CF31AE788AD008AA4CB /* UIColor+ColorUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = F3A57CF21AE788AD008AA4CB /* UIColor+ColorUtility.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -135,6 +138,11 @@
 		F3A3DF2A1AE10700008F92B7 /* API_Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = API_Header.h; sourceTree = "<group>"; };
 		F3A3DF2F1AE10E71008F92B7 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		F3A3DF301AE10E71008F92B7 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		F3A57CE81AE78018008AA4CB /* HomeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeCell.h; sourceTree = "<group>"; };
+		F3A57CE91AE78018008AA4CB /* HomeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeCell.m; sourceTree = "<group>"; };
+		F3A57CEF1AE7864E008AA4CB /* hc_cell_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hc_cell_icon@2x.png"; sourceTree = "<group>"; };
+		F3A57CF11AE788AD008AA4CB /* UIColor+ColorUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+ColorUtility.h"; sourceTree = "<group>"; };
+		F3A57CF21AE788AD008AA4CB /* UIColor+ColorUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ColorUtility.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +222,7 @@
 		F3A3DE921AE0A265008F92B7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F3A57CEE1AE7864E008AA4CB /* homevc */,
 				F3A3DEC31AE0B616008F92B7 /* navigation */,
 				F3A3DE9F1AE0AA87008F92B7 /* tabbar */,
 				F3A3DE951AE0A5D4008F92B7 /* icon */,
@@ -224,6 +233,8 @@
 		F3A3DE931AE0A285008F92B7 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				F3A57CF11AE788AD008AA4CB /* UIColor+ColorUtility.h */,
+				F3A57CF21AE788AD008AA4CB /* UIColor+ColorUtility.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -255,6 +266,8 @@
 				F3A3DF0A1AE0E4D1008F92B7 /* BaseTableViewController.m */,
 				F3A3DEE71AE0D61B008F92B7 /* HomeViewController.h */,
 				F3A3DEE81AE0D61B008F92B7 /* HomeViewController.m */,
+				F3A57CE81AE78018008AA4CB /* HomeCell.h */,
+				F3A57CE91AE78018008AA4CB /* HomeCell.m */,
 				F3A3DF2F1AE10E71008F92B7 /* DetailViewController.h */,
 				F3A3DF301AE10E71008F92B7 /* DetailViewController.m */,
 				F3A3DF001AE0E197008F92B7 /* ReadViewController.h */,
@@ -336,6 +349,14 @@
 			path = JsonExtend;
 			sourceTree = "<group>";
 		};
+		F3A57CEE1AE7864E008AA4CB /* homevc */ = {
+			isa = PBXGroup;
+			children = (
+				F3A57CEF1AE7864E008AA4CB /* hc_cell_icon@2x.png */,
+			);
+			path = homevc;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -404,6 +425,7 @@
 				F3A3DE9A1AE0A5D4008F92B7 /* Icon.png in Resources */,
 				F3A3DE9D1AE0A5D4008F92B7 /* Icon_120x120.png in Resources */,
 				F3A3DEE31AE0B76A008F92B7 /* night_navi_back@2x.png in Resources */,
+				F3A57CF01AE7864E008AA4CB /* hc_cell_icon@2x.png in Resources */,
 				F3A3DEBC1AE0AB01008F92B7 /* tb_news_normal@2x.png in Resources */,
 				F3A3DEDE1AE0B76A008F92B7 /* night_navi_back_highlighted@2x.png in Resources */,
 				F3A3DE771AE09EDE008F92B7 /* Images.xcassets in Resources */,
@@ -466,6 +488,7 @@
 			files = (
 				F3A3DF051AE0E1A5008F92B7 /* FoodViewController.m in Sources */,
 				F3A3DF261AE103A4008F92B7 /* AFInterfaceAPIExcute.m in Sources */,
+				F3A57CEA1AE78018008AA4CB /* HomeCell.m in Sources */,
 				F3A3DF1E1AE102E0008F92B7 /* NSArray+JSON.m in Sources */,
 				F3A3DF081AE0E1B1008F92B7 /* UserViewController.m in Sources */,
 				F3A3DE6F1AE09EDE008F92B7 /* AppDelegate.m in Sources */,
@@ -477,6 +500,7 @@
 				F3A3DF0B1AE0E4D1008F92B7 /* BaseTableViewController.m in Sources */,
 				F3A3DF231AE10355008F92B7 /* NSString+HXAddtions.m in Sources */,
 				F3A3DF111AE0F267008F92B7 /* ULETablePage.m in Sources */,
+				F3A57CF31AE788AD008AA4CB /* UIColor+ColorUtility.m in Sources */,
 				F3A3DF1F1AE102E0008F92B7 /* NSDictionary+JSON.m in Sources */,
 				F3A3DEEC1AE0D6D4008F92B7 /* CustomerNaviVC.m in Sources */,
 				F3A3DF201AE102E0008F92B7 /* NSObject+JSON.m in Sources */,

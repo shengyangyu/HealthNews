@@ -13,6 +13,7 @@
 #import "MBProgressHUD.h"
 #import "AFInterfaceAPIExcute.h"
 #import "BaseResponse.h"
+#import "NSString+HXAddtions.h"
 
 @interface BaseViewController : UIViewController<MBProgressHUDDelegate,AFInterfaceAPIDelegate>
 {

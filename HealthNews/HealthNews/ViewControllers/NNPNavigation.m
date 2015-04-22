@@ -105,9 +105,10 @@
 }
 
 #pragma mark - 添加截图 手势动画
-- (void)addScreenshot
+- (UIImage *)addScreenshot
 {
     [self.mScreenShotsList addObject:[self capture]];
+    return [self.mScreenShotsList lastObject];
 }
 
 #pragma mark - Utility Methods -

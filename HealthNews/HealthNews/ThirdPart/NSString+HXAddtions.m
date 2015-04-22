@@ -93,6 +93,30 @@
     return value;
 }
 
-
+// 将接口给的时间 转换成正常时间
++ (NSString *) changeTimeMethod:(NSString *)strTime
+{
+    NSString *value = nil;
+    if (!strTime) {
+        return value;
+    }
+    NSMutableArray *mArr = [NSMutableArray arrayWithArray:[strTime componentsSeparatedByString:@" "]];
+    NSDictionary *e1Dic = @{@"AM":@"上午",@"PM":@"下午"};
+    NSDictionary *e2Dic = @{@"Jan":@"1月",@"Feb":@"2月",@"Mar":@"3月",@"Apr":@"4月",@"May":@"5月",@"Jun":@"6月",@"Jul":@"7月",@"Aug":@"8月",@"Sep":@"9月",@"Oct":@"10月",@"Nov":@"11月",@"Dec":@"12月"};
+    // 替换月份
+    [mArr replaceObjectAtIndex:(0) withObject:e2Dic[mArr[0]]];
+    // 替换上下午
+    [mArr replaceObjectAtIndex:([mArr count]-1) withObject:e1Dic[[mArr lastObject]]];
+    value = [mArr componentsJoinedByString:@" "];
+    // 转换时间格式
+    NSDateFormatter *dateFormatter1 = [[NSDateFormatter alloc] init];
+    [dateFormatter1 setDateFormat:@"MMM dd, yyyy hh:mm:ss a"];
+    NSDate *date = [dateFormatter1 dateFromString:value];
+    NSDateFormatter *dateFormatter2 = [[NSDateFormatter alloc] init];
+    [dateFormatter2 setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSString *strDate = [dateFormatter2 stringFromDate:date];
+    
+    return strDate;
+}
 
 @end

@@ -8,6 +8,7 @@
 
 #import "HomeViewController.h"
 #import "DetailViewController.h"
+#import "HomeCell.h"
 
 @interface HomeViewController ()
 {
@@ -84,7 +85,7 @@
 #pragma mark - Table view data source
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 100;
+    return HC_Cell_height;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -93,19 +94,36 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *ID = @"cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    static NSString *ID = @"HomeCell";
+    HomeCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell = [[HomeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+        cell.selectionStyle = UITableViewCellSelectionStyleGray;
     }
-    HNNewsDetail *mclass = (HNNewsDetail *)m_muArray[indexPath.row];
-    cell.textLabel.text = mclass.title;
+    @try {
+        HNNewsDetail *mclass = (HNNewsDetail *)m_muArray[indexPath.row];
+        [cell.mIconImg setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",kImageUrl,mclass.img]] placeholderImage:[UIImage imageNamed:@"hc_cell_icon"]];
+        cell.mTitleLab.text = mclass.title;
+        cell.mTimeLab.text = [NSString changeTimeMethod:mclass.time];
+    }
+    @catch (NSException *exception) {
+        
+    }
+    
     return cell;
+}
+
++ (NSDate *)methodDateFromString:(NSString *)mString withFormat:(NSString *)mFormat
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"]];
+    [formatter setDateFormat:mFormat];
+    return [formatter dateFromString:mString];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     @try {
         HNNewsDetail *mclass = (HNNewsDetail *)m_muArray[indexPath.row];
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];

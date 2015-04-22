@@ -10,6 +10,8 @@
 #import "AFNetworking.h"
 
 #define kServiceUrl @"api.yi18.net"
+#define kImageUrl   @"http://www.yi18.net"
+
 #define kMKNetworkKitRequestTimeOutInSeconds 30
 
 #define SUPPRESS_PERFORM_SELECTOR_LEAK_WARNING(code)                    \

@@ -16,4 +16,7 @@
 + (NSString *) jsonStringWithNumber:(NSNumber *) number;
 + (NSString *) jsonStringWithObject:(id) object;
 
+// 将接口给的时间 转换成正常时间
++ (NSString *) changeTimeMethod:(NSString *)strTime;
+
 @end
