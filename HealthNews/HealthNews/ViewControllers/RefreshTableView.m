@@ -27,6 +27,7 @@
             case ULE_TableViewTypeHeader:
             {
                 [self addGifHeaderWithRefreshingTarget:self refreshingAction:@selector(headerRereshing)];
+                [self setAnimalImage];
                 break;
             }
                 // 2.上拉加载更多
@@ -39,6 +40,7 @@
             case ULE_TableViewTypeAll:
             {
                 [self addGifHeaderWithRefreshingTarget:self refreshingAction:@selector(headerRereshing)];
+                [self setAnimalImage];
                 [self addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(footerRereshing)];
                 break;
             }
@@ -47,6 +49,27 @@
         }
     }
     return self;
+}
+
+- (void)setAnimalImage {
+    // 设置普通状态的动画图片
+    NSMutableArray *idleImages = [NSMutableArray array];
+    for (NSUInteger i = 1; i<=60; i++) {
+        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"dropdown_anim__000%zd", i]];
+        [idleImages addObject:image];
+    }
+    [self.gifHeader setImages:idleImages forState:MJRefreshHeaderStateIdle];
+    
+    // 设置即将刷新状态的动画图片（一松开就会刷新的状态）
+    NSMutableArray *refreshingImages = [NSMutableArray array];
+    for (NSUInteger i = 1; i<=3; i++) {
+        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"dropdown_loading_0%zd", i]];
+        [refreshingImages addObject:image];
+    }
+    [self.gifHeader setImages:refreshingImages forState:MJRefreshHeaderStatePulling];
+    
+    // 设置正在刷新状态的动画图片
+    [self.gifHeader setImages:refreshingImages forState:MJRefreshHeaderStateRefreshing];
 }
 
 - (void)reSetMethod
@@ -229,7 +252,7 @@
     // 0.5秒后刷新表格UI
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [weakSelf reloadData];
-        weakSelf.contentInset = UIEdgeInsetsZero;
+        //weakSelf.contentInset = UIEdgeInsetsZero;
         [weakSelf stopAnimationHeaderAndFooter];
         //是否需要隐藏 上拉加载动画
         weakSelf.footer.hidden = dataIsAllLoaded;

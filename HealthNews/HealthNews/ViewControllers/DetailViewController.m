@@ -55,7 +55,7 @@
     if ([ApiName isEqualToString:API_NewsDetail]) {
         HNNewsDetailBase *mClass = (HNNewsDetailBase *)retObj;
         if (mClass.yi18.img.length != 0) {
-            NSString *htmlStr=[NSString stringWithFormat:@"<p> <strong>%@</strong> </p> <img src='%@/%@' width=\"305\" height=\"241\"/>%@",mClass.yi18.title,kImageUrl, mClass.yi18.img,mClass.yi18.message];
+            NSString *htmlStr=[NSString stringWithFormat:@"<p><strong>%@</strong></p><p>%@</p><p></p> <img src='%@/%@' width=\"305\" height=\"241\"/>%@",mClass.yi18.title,[NSString changeTimeMethod:mClass.yi18.time],kImageUrl, mClass.yi18.img,mClass.yi18.message];
             [mWebView loadHTMLString:htmlStr baseURL:nil];
         }else {
             NSString *htmlStr=[NSString stringWithFormat:@"%@", mClass.yi18.message];

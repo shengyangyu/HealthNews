@@ -37,7 +37,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     
     if (!self.isShowTabbar && self.rdv_tabBarController.tabBar.hidden==NO) {
-        [self.rdv_tabBarController setTabBarHidden:YES];
+        [self.rdv_tabBarController setTabBarHidden:YES animated:YES];
     }
     [super viewWillAppear:animated];
 }
@@ -138,6 +138,9 @@
 {
     if (controllerName.length <= 0)
         return;
+    // 保存截图
+    CustomerNaviVC *mNavi = (CustomerNaviVC *)self.navigationController;
+    [mNavi addScreenshot];
     
     Class class_Page = NSClassFromString((NSString *)controllerName);
     if (class_Page != nil) {
@@ -162,10 +165,6 @@
             [viewCtrl_Page performSelector:delegateMethod withObject:self];
 #pragma clang diagnostic pop
         }
-        // 保存截图
-        CustomerNaviVC *mNavi = (CustomerNaviVC *)self.navigationController;
-        [mNavi addScreenshot];
-        
         [self.navigationController pushViewController:viewCtrl_Page animated:YES];
     }
 }
@@ -205,8 +204,15 @@
     [l_backBtn setBackgroundImage:[UIImage imageNamed:@"bobo_navi_back_highlighted"] forState:UIControlStateHighlighted];
     [l_backBtn addTarget:self action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *bar_Btn = [[UIBarButtonItem alloc]initWithCustomView:l_backBtn];
-    self.navigationItem.leftBarButtonItem = bar_Btn;
-    self.navigationItem.leftBarButtonItem.style = UIBarButtonItemStyleDone;
+    
+    UIBarButtonItem *bar_Btn_l = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    /**
+     *  width为负数时，相当于btn向右移动width数值个像素，由于按钮本身和边界间距为5pix，所以width设为-5时，间距正好调整
+     *  为0；width为正数时，正好相反，相当于往左移动width数值个像素
+     */
+    bar_Btn_l.width = -5;
+    
+    self.navigationItem.leftBarButtonItems = @[bar_Btn_l,bar_Btn];
 }
 - (void)goBack{
     [self.navigationController popViewControllerAnimated:YES];

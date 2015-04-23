@@ -59,6 +59,8 @@
 		F3A57CEA1AE78018008AA4CB /* HomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F3A57CE91AE78018008AA4CB /* HomeCell.m */; };
 		F3A57CF01AE7864E008AA4CB /* hc_cell_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3A57CEF1AE7864E008AA4CB /* hc_cell_icon@2x.png */; };
 		F3A57CF31AE788AD008AA4CB /* UIColor+ColorUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = F3A57CF21AE788AD008AA4CB /* UIColor+ColorUtility.m */; };
+		F3AFD64D1AE8D4C700060172 /* refresh_circle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3AFD64B1AE8D4C700060172 /* refresh_circle@2x.png */; };
+		F3AFD64E1AE8D4C700060172 /* refresh_sphere@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3AFD64C1AE8D4C700060172 /* refresh_sphere@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -143,6 +145,8 @@
 		F3A57CEF1AE7864E008AA4CB /* hc_cell_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hc_cell_icon@2x.png"; sourceTree = "<group>"; };
 		F3A57CF11AE788AD008AA4CB /* UIColor+ColorUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+ColorUtility.h"; sourceTree = "<group>"; };
 		F3A57CF21AE788AD008AA4CB /* UIColor+ColorUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ColorUtility.m"; sourceTree = "<group>"; };
+		F3AFD64B1AE8D4C700060172 /* refresh_circle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "refresh_circle@2x.png"; sourceTree = "<group>"; };
+		F3AFD64C1AE8D4C700060172 /* refresh_sphere@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "refresh_sphere@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +226,7 @@
 		F3A3DE921AE0A265008F92B7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F3AFD64A1AE8D4C600060172 /* refresh */,
 				F3A57CEE1AE7864E008AA4CB /* homevc */,
 				F3A3DEC31AE0B616008F92B7 /* navigation */,
 				F3A3DE9F1AE0AA87008F92B7 /* tabbar */,
@@ -357,6 +362,15 @@
 			path = homevc;
 			sourceTree = "<group>";
 		};
+		F3AFD64A1AE8D4C600060172 /* refresh */ = {
+			isa = PBXGroup;
+			children = (
+				F3AFD64B1AE8D4C700060172 /* refresh_circle@2x.png */,
+				F3AFD64C1AE8D4C700060172 /* refresh_sphere@2x.png */,
+			);
+			path = refresh;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -440,8 +454,10 @@
 				F3A3DEBB1AE0AB01008F92B7 /* tb_reader_normal@2x.png in Resources */,
 				F3A3DEE21AE0B76A008F92B7 /* navi_background_88@2x.png in Resources */,
 				F3A3DEDD1AE0B76A008F92B7 /* night_bobo_navi_back_highlighted@2x.png in Resources */,
+				F3AFD64E1AE8D4C700060172 /* refresh_sphere@2x.png in Resources */,
 				F3A3DEB91AE0AB01008F92B7 /* tb_reader_highlight@2x.png in Resources */,
 				F3A3DEBA1AE0AB01008F92B7 /* tb_found_normal@2x.png in Resources */,
+				F3AFD64D1AE8D4C700060172 /* refresh_circle@2x.png in Resources */,
 				F3A3DE9C1AE0A5D4008F92B7 /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

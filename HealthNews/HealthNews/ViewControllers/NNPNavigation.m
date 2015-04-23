@@ -116,14 +116,15 @@
 - (UIImage *)capture
 {
     UIView *mView = self.rdv_tabBarController.view;
-    
+    NSLog(@"capture1");
     UIGraphicsBeginImageContextWithOptions(mView.bounds.size, mView.opaque, 0.0);
     [mView.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    
+    NSLog(@"capture2");
     return img;
 }
+
 
 - (void)moveViewWithX:(CGFloat)x
 {

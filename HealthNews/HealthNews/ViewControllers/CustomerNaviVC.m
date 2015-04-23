@@ -42,7 +42,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    //[super viewWillAppear:animated];
+    
     if ([self.navigationBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)])
     {
         [[self navigationBar] setTintColor:[UIColor colorWithRed:227.0/255.f green:6.0/255.f blue:21.0/255.f alpha:1.0f]];
@@ -62,6 +62,7 @@
     {
         [[self navigationBar] setTintColor:nil];
     }
+    //[super viewWillAppear:animated];
 }
 
 - (UIModalPresentationStyle)modalPresentationStyle {
@@ -74,6 +75,12 @@
     } else {
         return style;
     }
+}
+
+#pragma mark 控制状态栏的样式
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
 
 @end

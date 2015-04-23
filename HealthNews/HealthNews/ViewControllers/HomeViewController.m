@@ -54,8 +54,8 @@
 }
 
 -(void)initTableView{
-    [self addTableView:CGRectMake(0, 0, __MainScreen_Width, __viewContent_hight3) withStyle:UITableViewStylePlain withType:ULE_TableViewTypeNone parent:self.view];
-    //[self hideEmptySeparators];
+    [self addTableView:CGRectMake(0, 0, __MainScreen_Width, __viewContent_hight3) withStyle:UITableViewStylePlain withType:ULE_TableViewTypeAll parent:self.view];
+    [self hideEmptySeparators];
 }
 
 #pragma mark - request

@@ -22,7 +22,9 @@
 #define __viewContent_hight3 (__MainScreen_Height-49-44)//－tabbar -导航条
 #define kShowTitleAfterDelay 2
 #define IOS7_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0f)
-
+//判断是否大于 IOS7
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define IS_IOS7 SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")
 
 
 #endif
