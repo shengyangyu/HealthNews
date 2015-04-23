@@ -61,6 +61,11 @@
 		F3A57CF31AE788AD008AA4CB /* UIColor+ColorUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = F3A57CF21AE788AD008AA4CB /* UIColor+ColorUtility.m */; };
 		F3AFD64D1AE8D4C700060172 /* refresh_circle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3AFD64B1AE8D4C700060172 /* refresh_circle@2x.png */; };
 		F3AFD64E1AE8D4C700060172 /* refresh_sphere@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3AFD64C1AE8D4C700060172 /* refresh_sphere@2x.png */; };
+		F3AFD6521AE8F98900060172 /* MenuHrizontal.m in Sources */ = {isa = PBXBuildFile; fileRef = F3AFD6511AE8F98900060172 /* MenuHrizontal.m */; };
+		F3AFD6571AE8FB5900060172 /* SGFocusImageFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = F3AFD6541AE8FB5900060172 /* SGFocusImageFrame.m */; };
+		F3AFD6581AE8FB5900060172 /* SGFocusImageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F3AFD6561AE8FB5900060172 /* SGFocusImageItem.m */; };
+		F3AFD65D1AE8FC2400060172 /* CustomTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3AFD65A1AE8FC2400060172 /* CustomTableView.m */; };
+		F3AFD65E1AE8FC2400060172 /* ScrollPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3AFD65C1AE8FC2400060172 /* ScrollPageView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -147,6 +152,16 @@
 		F3A57CF21AE788AD008AA4CB /* UIColor+ColorUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ColorUtility.m"; sourceTree = "<group>"; };
 		F3AFD64B1AE8D4C700060172 /* refresh_circle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "refresh_circle@2x.png"; sourceTree = "<group>"; };
 		F3AFD64C1AE8D4C700060172 /* refresh_sphere@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "refresh_sphere@2x.png"; sourceTree = "<group>"; };
+		F3AFD6501AE8F98900060172 /* MenuHrizontal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuHrizontal.h; sourceTree = "<group>"; };
+		F3AFD6511AE8F98900060172 /* MenuHrizontal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuHrizontal.m; sourceTree = "<group>"; };
+		F3AFD6531AE8FB5900060172 /* SGFocusImageFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGFocusImageFrame.h; sourceTree = "<group>"; };
+		F3AFD6541AE8FB5900060172 /* SGFocusImageFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGFocusImageFrame.m; sourceTree = "<group>"; };
+		F3AFD6551AE8FB5900060172 /* SGFocusImageItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGFocusImageItem.h; sourceTree = "<group>"; };
+		F3AFD6561AE8FB5900060172 /* SGFocusImageItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGFocusImageItem.m; sourceTree = "<group>"; };
+		F3AFD6591AE8FC2400060172 /* CustomTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableView.h; sourceTree = "<group>"; };
+		F3AFD65A1AE8FC2400060172 /* CustomTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableView.m; sourceTree = "<group>"; };
+		F3AFD65B1AE8FC2400060172 /* ScrollPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollPageView.h; sourceTree = "<group>"; };
+		F3AFD65C1AE8FC2400060172 /* ScrollPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollPageView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -334,6 +349,7 @@
 		F3A3DF161AE102E0008F92B7 /* ThirdPart */ = {
 			isa = PBXGroup;
 			children = (
+				F3AFD64F1AE8F97C00060172 /* HNScrollView */,
 				F3A3DF211AE10355008F92B7 /* NSString+HXAddtions.h */,
 				F3A3DF221AE10355008F92B7 /* NSString+HXAddtions.m */,
 				F3A3DF171AE102E0008F92B7 /* JsonExtend */,
@@ -369,6 +385,23 @@
 				F3AFD64C1AE8D4C700060172 /* refresh_sphere@2x.png */,
 			);
 			path = refresh;
+			sourceTree = "<group>";
+		};
+		F3AFD64F1AE8F97C00060172 /* HNScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				F3AFD6501AE8F98900060172 /* MenuHrizontal.h */,
+				F3AFD6511AE8F98900060172 /* MenuHrizontal.m */,
+				F3AFD6531AE8FB5900060172 /* SGFocusImageFrame.h */,
+				F3AFD6541AE8FB5900060172 /* SGFocusImageFrame.m */,
+				F3AFD6551AE8FB5900060172 /* SGFocusImageItem.h */,
+				F3AFD6561AE8FB5900060172 /* SGFocusImageItem.m */,
+				F3AFD6591AE8FC2400060172 /* CustomTableView.h */,
+				F3AFD65A1AE8FC2400060172 /* CustomTableView.m */,
+				F3AFD65B1AE8FC2400060172 /* ScrollPageView.h */,
+				F3AFD65C1AE8FC2400060172 /* ScrollPageView.m */,
+			);
+			path = HNScrollView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -512,19 +545,24 @@
 				F3A3DEC21AE0B5B1008F92B7 /* BaseViewController.m in Sources */,
 				F3A3DF311AE10E71008F92B7 /* DetailViewController.m in Sources */,
 				F3A3DF021AE0E197008F92B7 /* ReadViewController.m in Sources */,
+				F3AFD65E1AE8FC2400060172 /* ScrollPageView.m in Sources */,
 				F3A3DEEF1AE0D8F2008F92B7 /* NNPNavigation.m in Sources */,
 				F3A3DF0B1AE0E4D1008F92B7 /* BaseTableViewController.m in Sources */,
 				F3A3DF231AE10355008F92B7 /* NSString+HXAddtions.m in Sources */,
+				F3AFD6581AE8FB5900060172 /* SGFocusImageItem.m in Sources */,
+				F3AFD65D1AE8FC2400060172 /* CustomTableView.m in Sources */,
 				F3A3DF111AE0F267008F92B7 /* ULETablePage.m in Sources */,
 				F3A57CF31AE788AD008AA4CB /* UIColor+ColorUtility.m in Sources */,
 				F3A3DF1F1AE102E0008F92B7 /* NSDictionary+JSON.m in Sources */,
 				F3A3DEEC1AE0D6D4008F92B7 /* CustomerNaviVC.m in Sources */,
 				F3A3DF201AE102E0008F92B7 /* NSObject+JSON.m in Sources */,
+				F3AFD6521AE8F98900060172 /* MenuHrizontal.m in Sources */,
 				F3A3DF291AE10441008F92B7 /* BaseResponse.m in Sources */,
 				F3A3DE6C1AE09EDE008F92B7 /* main.m in Sources */,
 				F3A3DEE91AE0D61B008F92B7 /* HomeViewController.m in Sources */,
 				F3A3DF151AE0FE2C008F92B7 /* AFRequestManager.m in Sources */,
 				F3A3DEE61AE0D589008F92B7 /* CustomerTabBarVC.m in Sources */,
+				F3AFD6571AE8FB5900060172 /* SGFocusImageFrame.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
