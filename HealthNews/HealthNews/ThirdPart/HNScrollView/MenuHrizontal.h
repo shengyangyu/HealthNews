@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#define MENUHEIHT 40
 #define NOMALKEY   @"normalKey"
 #define HEIGHTKEY  @"helightKey"
 #define TITLEKEY   @"titleKey"
+#define TYPEKEY    @"typeKey"
 #define TITLEWIDTH @"titleWidth"
 #define TOTALWIDTH @"totalWidth"
 

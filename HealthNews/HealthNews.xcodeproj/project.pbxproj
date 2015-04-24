@@ -64,7 +64,6 @@
 		F3AFD6521AE8F98900060172 /* MenuHrizontal.m in Sources */ = {isa = PBXBuildFile; fileRef = F3AFD6511AE8F98900060172 /* MenuHrizontal.m */; };
 		F3AFD6571AE8FB5900060172 /* SGFocusImageFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = F3AFD6541AE8FB5900060172 /* SGFocusImageFrame.m */; };
 		F3AFD6581AE8FB5900060172 /* SGFocusImageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F3AFD6561AE8FB5900060172 /* SGFocusImageItem.m */; };
-		F3AFD65D1AE8FC2400060172 /* CustomTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3AFD65A1AE8FC2400060172 /* CustomTableView.m */; };
 		F3AFD65E1AE8FC2400060172 /* ScrollPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3AFD65C1AE8FC2400060172 /* ScrollPageView.m */; };
 /* End PBXBuildFile section */
 
@@ -158,8 +157,6 @@
 		F3AFD6541AE8FB5900060172 /* SGFocusImageFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGFocusImageFrame.m; sourceTree = "<group>"; };
 		F3AFD6551AE8FB5900060172 /* SGFocusImageItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGFocusImageItem.h; sourceTree = "<group>"; };
 		F3AFD6561AE8FB5900060172 /* SGFocusImageItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGFocusImageItem.m; sourceTree = "<group>"; };
-		F3AFD6591AE8FC2400060172 /* CustomTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableView.h; sourceTree = "<group>"; };
-		F3AFD65A1AE8FC2400060172 /* CustomTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableView.m; sourceTree = "<group>"; };
 		F3AFD65B1AE8FC2400060172 /* ScrollPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollPageView.h; sourceTree = "<group>"; };
 		F3AFD65C1AE8FC2400060172 /* ScrollPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollPageView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -396,8 +393,6 @@
 				F3AFD6541AE8FB5900060172 /* SGFocusImageFrame.m */,
 				F3AFD6551AE8FB5900060172 /* SGFocusImageItem.h */,
 				F3AFD6561AE8FB5900060172 /* SGFocusImageItem.m */,
-				F3AFD6591AE8FC2400060172 /* CustomTableView.h */,
-				F3AFD65A1AE8FC2400060172 /* CustomTableView.m */,
 				F3AFD65B1AE8FC2400060172 /* ScrollPageView.h */,
 				F3AFD65C1AE8FC2400060172 /* ScrollPageView.m */,
 			);
@@ -550,7 +545,6 @@
 				F3A3DF0B1AE0E4D1008F92B7 /* BaseTableViewController.m in Sources */,
 				F3A3DF231AE10355008F92B7 /* NSString+HXAddtions.m in Sources */,
 				F3AFD6581AE8FB5900060172 /* SGFocusImageItem.m in Sources */,
-				F3AFD65D1AE8FC2400060172 /* CustomTableView.m in Sources */,
 				F3A3DF111AE0F267008F92B7 /* ULETablePage.m in Sources */,
 				F3A57CF31AE788AD008AA4CB /* UIColor+ColorUtility.m in Sources */,
 				F3A3DF1F1AE102E0008F92B7 /* NSDictionary+JSON.m in Sources */,

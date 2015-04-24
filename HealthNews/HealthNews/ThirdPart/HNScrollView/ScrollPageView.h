@@ -7,21 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CustomTableView.h"
+#import "HNHeaderFile.h"
+#import "RefreshTableView.h"
 
 @protocol ScrollPageViewDelegate <NSObject>
+@optional
 -(void)didScrollPageViewChangedPage:(NSInteger)aPage;
 @end
 
-@interface ScrollPageView : UIView<UIScrollViewDelegate,CustomTableViewDataSource,CustomTableViewDelegate>
+@interface ScrollPageView : UIView<UIScrollViewDelegate,UITableViewDataSource,
+UITableViewDelegate>
 {
     NSInteger mCurrentPage;
     BOOL mNeedUseDelegate;
 }
 @property (nonatomic,retain) UIScrollView *scrollView;
-
 @property (nonatomic,retain) NSMutableArray *contentItems;
-
 @property (nonatomic,assign) id<ScrollPageViewDelegate> delegate;
 
 #pragma mark 添加ScrollowViewd的ContentView
@@ -31,5 +32,6 @@
 #pragma mark 刷新某个页面
 -(void)freshContentTableAtIndex:(NSInteger)aIndex;
 #pragma mark 改变TableView上面滚动栏的内容
--(void)changeHeaderContentWithCustomTable:(CustomTableView *)aTableContent;
+-(void)changeHeaderContentWithCustomTable:(RefreshTableView *)aTableContent;
+
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "ScrollPageView.h"
-#import "HomeViewCell.h"
+#import "HomeCell.h"
 
 @implementation ScrollPageView
 
@@ -33,7 +33,6 @@
     }
     if (_scrollView == nil) {
         _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
-        NSLog(@"ScrollViewFrame:(%f,%f)",self.frame.size.width,self.frame.size.height);
         _scrollView.pagingEnabled = YES;
         _scrollView.delegate = self;
     }
@@ -41,25 +40,22 @@
 }
 
 -(void)dealloc{
-    [_contentItems removeAllObjects],[_contentItems release],_contentItems= nil;
-    [_scrollView release];
-    [super dealloc];
+    [_contentItems removeAllObjects],_contentItems= nil;
 }
 
 #pragma mark - 其他辅助功能
 #pragma mark 添加ScrollowViewd的ContentView
 -(void)setContentOfTables:(NSInteger)aNumerOfTables{
     for (int i = 0; i < aNumerOfTables; i++) {
-        CustomTableView *vCustomTableView = [[CustomTableView alloc] initWithFrame:CGRectMake(320 * i, 0, 320, self.frame.size.height)];
-        vCustomTableView.delegate = self;
-        vCustomTableView.dataSource = self;
+        RefreshTableView *vTableView = [[RefreshTableView alloc] initWithFrame:CGRectMake(__MainScreen_Width * i, 0, __MainScreen_Width, self.frame.size.height) withStyle:UITableViewStylePlain withType:ULE_TableViewTypeAll];
+        vTableView.delegate = self;
+        vTableView.dataSource = self;
         //为table添加嵌套HeadderView
-        [self addLoopScrollowView:vCustomTableView];
-        [_scrollView addSubview:vCustomTableView];
-        [_contentItems addObject:vCustomTableView];
-        [vCustomTableView release];
+        [self addLoopScrollowView:vTableView];
+        [_scrollView addSubview:vTableView];
+        [_contentItems addObject:vTableView];
     }
-    [_scrollView setContentSize:CGSizeMake(320 * aNumerOfTables, self.frame.size.height)];
+    [_scrollView setContentSize:CGSizeMake(__MainScreen_Width * aNumerOfTables, self.frame.size.height)];
 }
 
 #pragma mark 移动ScrollView到某个页面
@@ -78,22 +74,20 @@
     if (_contentItems.count < aIndex) {
         return;
     }
-    CustomTableView *vTableContentView =(CustomTableView *)[_contentItems objectAtIndex:aIndex];
-    [vTableContentView forceToFreshData];
+    RefreshTableView *vTableContentView =(RefreshTableView *)[_contentItems objectAtIndex:aIndex];
+    [vTableContentView.header beginRefreshing];
 }
 
 #pragma mark 添加HeaderView
--(void)addLoopScrollowView:(CustomTableView *)aTableView {
+-(void)addLoopScrollowView:(RefreshTableView *)aTableView {
     //添加一张默认图片
-    SGFocusImageItem *item = [[[SGFocusImageItem alloc] initWithDict:@{@"image": [NSString stringWithFormat:@"girl%d",2]} tag:-1] autorelease];
+    SGFocusImageItem *item = [[SGFocusImageItem alloc] initWithDict:@{@"image": [NSString stringWithFormat:@"girl%d",2]} tag:-1];
     SGFocusImageFrame *bannerView = [[SGFocusImageFrame alloc] initWithFrame:CGRectMake(0, -105, 320, 105) delegate:aTableView imageItems:@[item] isAuto:YES];
-    aTableView.homeTableView.tableHeaderView = bannerView;
-    [bannerView release];
-    
+    aTableView.tableHeaderView = bannerView;
 }
 
 #pragma mark 改变TableView上面滚动栏的内容
--(void)changeHeaderContentWithCustomTable:(CustomTableView *)aTableContent{
+-(void)changeHeaderContentWithCustomTable:(RefreshTableView *)aTableContent{
     int length = 4;
     NSMutableArray *tempArray = [NSMutableArray array];
     for (int i = 0 ; i < length; i++)
@@ -110,13 +104,13 @@
     if (length > 1)
     {
         NSDictionary *dict = [tempArray objectAtIndex:length-1];
-        SGFocusImageItem *item = [[[SGFocusImageItem alloc] initWithDict:dict tag:-1] autorelease];
+        SGFocusImageItem *item = [[SGFocusImageItem alloc] initWithDict:dict tag:-1];
         [itemArray addObject:item];
     }
     for (int i = 0; i < length; i++)
     {
         NSDictionary *dict = [tempArray objectAtIndex:i];
-        SGFocusImageItem *item = [[[SGFocusImageItem alloc] initWithDict:dict tag:i] autorelease];
+        SGFocusImageItem *item = [[SGFocusImageItem alloc] initWithDict:dict tag:i];
         [itemArray addObject:item];
         
     }
@@ -124,11 +118,11 @@
     if (length >1)
     {
         NSDictionary *dict = [tempArray objectAtIndex:0];
-        SGFocusImageItem *item = [[[SGFocusImageItem alloc] initWithDict:dict tag:length] autorelease];
+        SGFocusImageItem *item = [[SGFocusImageItem alloc] initWithDict:dict tag:length];
         [itemArray addObject:item];
     }
     
-    SGFocusImageFrame *vFocusFrame = (SGFocusImageFrame *)aTableContent.homeTableView.tableHeaderView;
+    SGFocusImageFrame *vFocusFrame = (SGFocusImageFrame *)aTableContent.tableHeaderView;
     [vFocusFrame changeImageViewsContent:itemArray];
 }
 
@@ -160,65 +154,49 @@
   
 
 }
-
-#pragma mark - CustomTableViewDataSource
--(NSInteger)numberOfRowsInTableView:(UITableView *)aTableView InSection:(NSInteger)section FromView:(CustomTableView *)aView{
-    return aView.tableInfoArray.count;
+#pragma mark - Table View DataSource
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return HC_Cell_height;
 }
 
--(UITableViewCell *)cellForRowInTableView:(UITableView *)aTableView IndexPath:(NSIndexPath *)aIndexPath FromView:(CustomTableView *)aView{
-    static NSString *vCellIdentify = @"homeCell";
-    HomeViewCell *vCell = [aTableView dequeueReusableCellWithIdentifier:vCellIdentify];
-    if (vCell == nil) {
-        vCell = [[[NSBundle mainBundle] loadNibNamed:@"HomeViewCell" owner:self options:nil] lastObject];
+- (NSInteger)tableView:(UITableView *)aTableView numberOfRowsInSection:(NSInteger)section
+{
+    RefreshTableView *tmp = (RefreshTableView *)aTableView;
+    return [tmp.mInfoArray count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *identifier = @"HomeCell";
+    HomeCell *cell = [aTableView dequeueReusableCellWithIdentifier:identifier];
+    if (cell == nil)
+    {
+        cell = [[HomeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell*)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
     
-    NSInteger vNewIndex = aIndexPath.row % 4 + 1;
-    vCell.headerImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"new%d",vNewIndex]];
-    return vCell;
 }
 
-#pragma mark CustomTableViewDelegate
--(float)heightForRowAthIndexPath:(UITableView *)aTableView IndexPath:(NSIndexPath *)aIndexPath FromView:(CustomTableView *)aView{
-    HomeViewCell *vCell = [[[NSBundle mainBundle] loadNibNamed:@"HomeViewCell" owner:self options:nil] lastObject];
-    return vCell.frame.size.height;
+#pragma mark 开始进入刷新状态
+- (void)tableViewHeaderRereshing:(UITableView *)tableView withCompletioned:(void (^)())completioned
+{
+    //RefreshTableView *tmp = (RefreshTableView *)tableView;
+    //下拉刷新
+    //m_indexNum = 1;
+    //m_totalCount = 0;
+    //[self requestNews];//请求机票订单列表数据
 }
 
--(void)didSelectedRowAthIndexPath:(UITableView *)aTableView IndexPath:(NSIndexPath *)aIndexPath FromView:(CustomTableView *)aView{
+- (void)tableViewFooterRereshing:(UITableView *)tableView withCompletioned:(void (^)())completioned
+{
+    //RefreshTableView *tmp = (RefreshTableView *)tableView;
+    //上拉加载更多
+    //[self requestNews];
 }
-
--(void)loadData:(void(^)(int aAddedRowCount))complete FromView:(CustomTableView *)aView{
-    //    double delayInSeconds = 1.0;
-    //    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    //    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-    for (int i = 0; i < 4; i++) {
-        [aView.tableInfoArray  addObject:@"0"];
-    }
-    if (complete) {
-        complete(4);
-    }
-    //    });
-}
-
--(void)refreshData:(void(^)())complete FromView:(CustomTableView *)aView{
-    double delayInSeconds = 1.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [aView.tableInfoArray removeAllObjects];
-        for (int i = 0; i < 4; i++) {
-            [aView.tableInfoArray addObject:@"0"];
-        }
-        //改变header显示图片
-        [self changeHeaderContentWithCustomTable:aView];
-        if (complete) {
-            complete();
-        }
-    });
-}
-
-- (BOOL)tableViewEgoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view FromView:(CustomTableView *)aView{
-   return  aView.reloading;
-}
-
 
 @end

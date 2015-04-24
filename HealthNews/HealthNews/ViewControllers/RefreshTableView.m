@@ -16,6 +16,7 @@
     
     self = [super initWithFrame:frame style:style];
     _viewType = type;
+    _mInfoArray = [[NSMutableArray alloc] init];
     if (self) {
         self.backgroundColor = [UIColor clearColor];
         switch (_viewType) {
@@ -258,6 +259,16 @@
         weakSelf.footer.hidden = dataIsAllLoaded;
     });
 }
+
+#pragma mark -
+- (void)foucusImageFrame:(SGFocusImageFrame *)imageFrame didSelectItem:(SGFocusImageItem *)item {
+
+}
+
+- (void)foucusImageFrame:(SGFocusImageFrame *)imageFrame currentItem:(int)index {
+
+}
+
 
 #pragma mark -
 
