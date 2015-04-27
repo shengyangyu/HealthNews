@@ -129,9 +129,10 @@ static CGFloat SWITCH_FOCUS_PICTURE_INTERVAL = 5.0; //switch interval time
     for (int i = 0; i < aImageItems.count; i++) {
         SGFocusImageItem *item = [aImageItems objectAtIndex:i];
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i * _scrollView.frame.size.width+space, space, _scrollView.frame.size.width-space*2, _scrollView.frame.size.height-2*space-size.height)];
+        imageView.contentMode = UIViewContentModeScaleAspectFill;
         //加载图片
         imageView.backgroundColor = i%2?[UIColor redColor]:[UIColor blueColor];
-        imageView.image = [UIImage imageNamed:item.image];
+        [imageView setImageWithURL:[NSURL URLWithString:item.image] placeholderImage:[UIImage imageNamed:@"NTESAW_banner_default"]];
         [_scrollView addSubview:imageView];
         //[imageView release];
     }
@@ -181,8 +182,8 @@ static CGFloat SWITCH_FOCUS_PICTURE_INTERVAL = 5.0; //switch interval time
     int page = (int)(_scrollView.contentOffset.x / _scrollView.frame.size.width);
     if (page > -1 && page < imageItems.count) {
         SGFocusImageItem *item = [imageItems objectAtIndex:page];
-        if ([self.delegate respondsToSelector:@selector(foucusImageFrame:didSelectItem:)]) {
-            [self.delegate foucusImageFrame:self didSelectItem:item];
+        if ([self.delegate respondsToSelector:@selector(foucusImageFrame:didSelectItem:withIndex:)]) {
+            [self.delegate foucusImageFrame:self didSelectItem:item withIndex:page];
         }
     }
 }

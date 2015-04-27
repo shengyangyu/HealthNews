@@ -17,9 +17,10 @@
 {
     self.title = nil;
     self.image = nil;
+    self.tag = nil;
     //[super dealloc];
 }
-- (id)initWithTitle:(NSString *)title image:(NSString *)image tag:(NSInteger)tag
+- (id)initWithTitle:(NSString *)title image:(NSString *)image tag:(NSString *)tag
 {
     self = [super init];
     if (self) {
@@ -31,7 +32,7 @@
     return self;
 }
 
-- (id)initWithDict:(NSDictionary *)dict tag:(NSInteger)tag
+- (id)initWithDict:(NSDictionary *)dict tag:(NSString *)tag
 {
     self = [super init];
     if (self)
@@ -40,6 +41,7 @@
         {
             self.title = [dict objectForKey:@"title"];
             self.image = [dict objectForKey:@"image"];
+            self.tag = tag;
             //...
         }
     }

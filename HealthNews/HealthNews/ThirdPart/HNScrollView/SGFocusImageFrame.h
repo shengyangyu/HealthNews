@@ -7,13 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIImageView+AFNetworking.h"
+
 @class SGFocusImageItem;
 @class SGFocusImageFrame;
 
 #pragma mark - SGFocusImageFrameDelegate
 @protocol SGFocusImageFrameDelegate <NSObject>
 @optional
-- (void)foucusImageFrame:(SGFocusImageFrame *)imageFrame didSelectItem:(SGFocusImageItem *)item;
+- (void)foucusImageFrame:(SGFocusImageFrame *)imageFrame didSelectItem:(SGFocusImageItem *)item withIndex:(NSInteger)mIndex;
 - (void)foucusImageFrame:(SGFocusImageFrame *)imageFrame currentItem:(int)index;
 
 @end

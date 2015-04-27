@@ -8,6 +8,7 @@
 
 #import "ScrollPageView.h"
 #import "HomeCell.h"
+#import "HomeViewController.h"
 
 @implementation ScrollPageView
 
@@ -45,11 +46,12 @@
 
 #pragma mark - 其他辅助功能
 #pragma mark 添加ScrollowViewd的ContentView
--(void)setContentOfTables:(NSInteger)aNumerOfTables{
+-(void)setContentOfTables:(NSInteger)aNumerOfTables {
     for (int i = 0; i < aNumerOfTables; i++) {
-        RefreshTableView *vTableView = [[RefreshTableView alloc] initWithFrame:CGRectMake(__MainScreen_Width * i, 0, __MainScreen_Width, self.frame.size.height) withStyle:UITableViewStylePlain withType:ULE_TableViewTypeAll];
+        SPTableView *vTableView = [[SPTableView alloc] initWithFrame:CGRectMake(__MainScreen_Width * i, 0, __MainScreen_Width, self.frame.size.height) withStyle:UITableViewStylePlain withType:ULE_TableViewTypeAll];
         vTableView.delegate = self;
         vTableView.dataSource = self;
+        vTableView.m_type = self.typeArray[i];
         //为table添加嵌套HeadderView
         [self addLoopScrollowView:vTableView];
         [_scrollView addSubview:vTableView];
@@ -74,56 +76,20 @@
     if (_contentItems.count < aIndex) {
         return;
     }
-    RefreshTableView *vTableContentView =(RefreshTableView *)[_contentItems objectAtIndex:aIndex];
+    SPTableView *vTableContentView =(SPTableView *)[_contentItems objectAtIndex:aIndex];
+    // 如果已有数据 不自动初始化
+    if ([vTableContentView.m_heads count] && [vTableContentView.mInfoArray count]) {
+        return;
+    }
     [vTableContentView.header beginRefreshing];
 }
 
 #pragma mark 添加HeaderView
--(void)addLoopScrollowView:(RefreshTableView *)aTableView {
+-(void)addLoopScrollowView:(SPTableView *)aTableView {
     //添加一张默认图片
-    SGFocusImageItem *item = [[SGFocusImageItem alloc] initWithDict:@{@"image": [NSString stringWithFormat:@"girl%d",2]} tag:-1];
-    SGFocusImageFrame *bannerView = [[SGFocusImageFrame alloc] initWithFrame:CGRectMake(0, -105, 320, 105) delegate:aTableView imageItems:@[item] isAuto:YES];
+    SGFocusImageItem *item = [[SGFocusImageItem alloc] initWithDict:@{@"image": @"NTESAW_banner_default"} tag:@"-1"];
+    SGFocusImageFrame *bannerView = [[SGFocusImageFrame alloc] initWithFrame:CGRectMake(0, -105, 320, 105) delegate:self imageItems:@[item] isAuto:YES];
     aTableView.tableHeaderView = bannerView;
-}
-
-#pragma mark 改变TableView上面滚动栏的内容
--(void)changeHeaderContentWithCustomTable:(RefreshTableView *)aTableContent{
-    int length = 4;
-    NSMutableArray *tempArray = [NSMutableArray array];
-    for (int i = 0 ; i < length; i++)
-    {
-        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
-                              [NSString stringWithFormat:@"title%d",i],@"title" ,
-                              [NSString stringWithFormat:@"girl%d",(i + 1)],@"image",
-                              nil];
-        [tempArray addObject:dict];
-    }
-    
-    NSMutableArray *itemArray = [NSMutableArray arrayWithCapacity:length+2];
-    //添加最后一张图 用于循环
-    if (length > 1)
-    {
-        NSDictionary *dict = [tempArray objectAtIndex:length-1];
-        SGFocusImageItem *item = [[SGFocusImageItem alloc] initWithDict:dict tag:-1];
-        [itemArray addObject:item];
-    }
-    for (int i = 0; i < length; i++)
-    {
-        NSDictionary *dict = [tempArray objectAtIndex:i];
-        SGFocusImageItem *item = [[SGFocusImageItem alloc] initWithDict:dict tag:i];
-        [itemArray addObject:item];
-        
-    }
-    //添加第一张图 用于循环
-    if (length >1)
-    {
-        NSDictionary *dict = [tempArray objectAtIndex:0];
-        SGFocusImageItem *item = [[SGFocusImageItem alloc] initWithDict:dict tag:length];
-        [itemArray addObject:item];
-    }
-    
-    SGFocusImageFrame *vFocusFrame = (SGFocusImageFrame *)aTableContent.tableHeaderView;
-    [vFocusFrame changeImageViewsContent:itemArray];
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -147,56 +113,78 @@
 {
     if (!decelerate)
     {
-//        CGFloat targetX = _scrollView.contentOffset.x + _scrollView.frame.size.width;
-//        targetX = (int)(targetX/ITEM_WIDTH) * ITEM_WIDTH;
-//        [self moveToTargetPosition:targetX];
+        /*
+        CGFloat targetX = _scrollView.contentOffset.x + _scrollView.frame.size.width;
+        targetX = (int)(targetX/ITEM_WIDTH) * ITEM_WIDTH;
+        [self moveToTargetPosition:targetX];
+         */
     }
-  
-
 }
-#pragma mark - Table View DataSource
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+#pragma mark - Table view data source
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     return HC_Cell_height;
 }
-
-- (NSInteger)tableView:(UITableView *)aTableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    RefreshTableView *tmp = (RefreshTableView *)aTableView;
-    return [tmp.mInfoArray count];
+    SPTableView *tmp = (SPTableView *)tableView;
+    return tmp.mInfoArray.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *identifier = @"HomeCell";
-    HomeCell *cell = [aTableView dequeueReusableCellWithIdentifier:identifier];
-    if (cell == nil)
-    {
-        cell = [[HomeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    static NSString *ID = @"HomeCell";
+    HomeCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    if (cell == nil) {
+        cell = [[HomeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+        cell.selectionStyle = UITableViewCellSelectionStyleGray;
     }
+    @try {
+        SPTableView *tmp = (SPTableView *)tableView;
+        HNNewsDetail *mclass = (HNNewsDetail *) tmp.mInfoArray[indexPath.row];
+        [cell.mIconImg setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",kImageUrl,mclass.img]] placeholderImage:[UIImage imageNamed:@"hc_cell_icon"]];
+        cell.mTitleLab.text = mclass.title;
+        cell.mTimeLab.text = [NSString changeTimeMethod:mclass.time];
+    }
+    @catch (NSException *exception) {
+        
+    }
+    
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell*)cell forRowAtIndexPath:(NSIndexPath *)indexPath
++ (NSDate *)methodDateFromString:(NSString *)mString withFormat:(NSString *)mFormat
 {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"]];
+    [formatter setDateFormat:mFormat];
+    return [formatter dateFromString:mString];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    @try {
+        SPTableView *tmp = (SPTableView *)tableView;
+        HNNewsDetail *mclass = (HNNewsDetail *)tmp.mInfoArray[indexPath.row];
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+        [dic setObject:mclass.mId forKey:@"id"];
+        [self.supVC pushNewViewController:@"DetailViewController" isNibPage:NO withData:dic];
+    }
+    @catch (NSException *exception) {
+        //[self HUDShow:@"获取详情错误!" delay:kShowTitleAfterDelay];
+    }
+}
+#pragma mark -
+- (void)foucusImageFrame:(SGFocusImageFrame *)imageFrame didSelectItem:(SGFocusImageItem *)item withIndex:(NSInteger)mIndex {
+    if (![item.tag isEqualToString:@"-1"]) {
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+        [dic setObject:item.tag forKey:@"id"];
+        [self.supVC pushNewViewController:@"DetailViewController" isNibPage:NO withData:dic];
+    }
+}
+
+- (void)foucusImageFrame:(SGFocusImageFrame *)imageFrame currentItem:(int)index {
     
 }
-
-#pragma mark 开始进入刷新状态
-- (void)tableViewHeaderRereshing:(UITableView *)tableView withCompletioned:(void (^)())completioned
-{
-    //RefreshTableView *tmp = (RefreshTableView *)tableView;
-    //下拉刷新
-    //m_indexNum = 1;
-    //m_totalCount = 0;
-    //[self requestNews];//请求机票订单列表数据
-}
-
-- (void)tableViewFooterRereshing:(UITableView *)tableView withCompletioned:(void (^)())completioned
-{
-    //RefreshTableView *tmp = (RefreshTableView *)tableView;
-    //上拉加载更多
-    //[self requestNews];
-}
-
 @end

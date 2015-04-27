@@ -11,9 +11,9 @@
 @interface SGFocusImageItem : NSObject
 
 @property (nonatomic, retain)  NSString     *title;
-@property (nonatomic, retain)  NSString      *image;
-@property (nonatomic, assign)  NSInteger     tag;
+@property (nonatomic, retain)  NSString     *image;
+@property (nonatomic, assign)  NSString     *tag;
 
-- (id)initWithTitle:(NSString *)title image:(NSString *)image tag:(NSInteger)tag;
-- (id)initWithDict:(NSDictionary *)dict tag:(NSInteger)tag;
+- (id)initWithTitle:(NSString *)title image:(NSString *)image tag:(NSString *)tag;
+- (id)initWithDict:(NSDictionary *)dict tag:(NSString *)tag;
 @end

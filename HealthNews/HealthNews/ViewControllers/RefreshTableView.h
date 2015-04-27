@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "MJRefresh.h"
-#import "SGFocusImageFrame.h"
-#import "SGFocusImageItem.h"
 
 // 获取键盘大小
 #define _UIKeyboardFrameEndUserInfoKey (&UIKeyboardFrameEndUserInfoKey != NULL ? UIKeyboardFrameEndUserInfoKey : @"UIKeyboardBoundsUserInfoKey")
@@ -35,7 +33,7 @@ typedef NS_ENUM(NSInteger,  ULETableViewType) {
 - (void)tableViewFooterRereshing:(UITableView *)tableView withCompletioned:(void (^)())completioned;
 @end
 
-@interface RefreshTableView : UITableView<SGFocusImageFrameDelegate>
+@interface RefreshTableView : UITableView
 {
     ULETableViewType    _viewType;              //TableView类型
     UIEdgeInsets        _priorInset;            //之前inset

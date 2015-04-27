@@ -260,14 +260,7 @@
     });
 }
 
-#pragma mark -
-- (void)foucusImageFrame:(SGFocusImageFrame *)imageFrame didSelectItem:(SGFocusImageItem *)item {
 
-}
-
-- (void)foucusImageFrame:(SGFocusImageFrame *)imageFrame currentItem:(int)index {
-
-}
 
 
 #pragma mark -

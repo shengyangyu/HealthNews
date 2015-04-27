@@ -65,6 +65,10 @@
 		F3AFD6571AE8FB5900060172 /* SGFocusImageFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = F3AFD6541AE8FB5900060172 /* SGFocusImageFrame.m */; };
 		F3AFD6581AE8FB5900060172 /* SGFocusImageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F3AFD6561AE8FB5900060172 /* SGFocusImageItem.m */; };
 		F3AFD65E1AE8FC2400060172 /* ScrollPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3AFD65C1AE8FC2400060172 /* ScrollPageView.m */; };
+		F3C2E4AF1AEDDD1200DF848B /* SPTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C2E4AE1AEDDD1200DF848B /* SPTableView.m */; };
+		F3C2E4B21AEDE6CD00DF848B /* helight.png in Resources */ = {isa = PBXBuildFile; fileRef = F3C2E4B01AEDE6CD00DF848B /* helight.png */; };
+		F3C2E4B31AEDE6CD00DF848B /* normal.png in Resources */ = {isa = PBXBuildFile; fileRef = F3C2E4B11AEDE6CD00DF848B /* normal.png */; };
+		F3C2E4B51AEE2A4000DF848B /* NTESAW_banner_default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3C2E4B41AEE2A4000DF848B /* NTESAW_banner_default@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -159,6 +163,11 @@
 		F3AFD6561AE8FB5900060172 /* SGFocusImageItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGFocusImageItem.m; sourceTree = "<group>"; };
 		F3AFD65B1AE8FC2400060172 /* ScrollPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollPageView.h; sourceTree = "<group>"; };
 		F3AFD65C1AE8FC2400060172 /* ScrollPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollPageView.m; sourceTree = "<group>"; };
+		F3C2E4AD1AEDDD1200DF848B /* SPTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPTableView.h; sourceTree = "<group>"; };
+		F3C2E4AE1AEDDD1200DF848B /* SPTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPTableView.m; sourceTree = "<group>"; };
+		F3C2E4B01AEDE6CD00DF848B /* helight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = helight.png; sourceTree = "<group>"; };
+		F3C2E4B11AEDE6CD00DF848B /* normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = normal.png; sourceTree = "<group>"; };
+		F3C2E4B41AEE2A4000DF848B /* NTESAW_banner_default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NTESAW_banner_default@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -387,6 +396,9 @@
 		F3AFD64F1AE8F97C00060172 /* HNScrollView */ = {
 			isa = PBXGroup;
 			children = (
+				F3C2E4B41AEE2A4000DF848B /* NTESAW_banner_default@2x.png */,
+				F3C2E4B01AEDE6CD00DF848B /* helight.png */,
+				F3C2E4B11AEDE6CD00DF848B /* normal.png */,
 				F3AFD6501AE8F98900060172 /* MenuHrizontal.h */,
 				F3AFD6511AE8F98900060172 /* MenuHrizontal.m */,
 				F3AFD6531AE8FB5900060172 /* SGFocusImageFrame.h */,
@@ -395,6 +407,8 @@
 				F3AFD6561AE8FB5900060172 /* SGFocusImageItem.m */,
 				F3AFD65B1AE8FC2400060172 /* ScrollPageView.h */,
 				F3AFD65C1AE8FC2400060172 /* ScrollPageView.m */,
+				F3C2E4AD1AEDDD1200DF848B /* SPTableView.h */,
+				F3C2E4AE1AEDDD1200DF848B /* SPTableView.m */,
 			);
 			path = HNScrollView;
 			sourceTree = "<group>";
@@ -462,6 +476,7 @@
 				F3A3DEBE1AE0AB01008F92B7 /* tb_me_normal@2x.png in Resources */,
 				F3A3DEF51AE0D9D8008F92B7 /* Default-568h@2x.png in Resources */,
 				F3A3DEDF1AE0B76A008F92B7 /* navi_back_highlighted@2x.png in Resources */,
+				F3C2E4B51AEE2A4000DF848B /* NTESAW_banner_default@2x.png in Resources */,
 				F3A3DEE01AE0B76A008F92B7 /* navi_background@2x.png in Resources */,
 				F3A3DEE11AE0B76A008F92B7 /* bobo_navi_back_highlighted@2x.png in Resources */,
 				F3A3DE9A1AE0A5D4008F92B7 /* Icon.png in Resources */,
@@ -469,9 +484,11 @@
 				F3A3DEE31AE0B76A008F92B7 /* night_navi_back@2x.png in Resources */,
 				F3A57CF01AE7864E008AA4CB /* hc_cell_icon@2x.png in Resources */,
 				F3A3DEBC1AE0AB01008F92B7 /* tb_news_normal@2x.png in Resources */,
+				F3C2E4B21AEDE6CD00DF848B /* helight.png in Resources */,
 				F3A3DEDE1AE0B76A008F92B7 /* night_navi_back_highlighted@2x.png in Resources */,
 				F3A3DE771AE09EDE008F92B7 /* Images.xcassets in Resources */,
 				F3A3DEDC1AE0B76A008F92B7 /* navi_back@2x.png in Resources */,
+				F3C2E4B31AEDE6CD00DF848B /* normal.png in Resources */,
 				F3A3DEFF1AE0DCEC008F92B7 /* tb_selected_background@2x.png in Resources */,
 				F3A3DEBF1AE0AB01008F92B7 /* tb_news_highlight@2x.png in Resources */,
 				F3A3DEF61AE0D9D8008F92B7 /* Default.png in Resources */,
@@ -552,6 +569,7 @@
 				F3A3DF201AE102E0008F92B7 /* NSObject+JSON.m in Sources */,
 				F3AFD6521AE8F98900060172 /* MenuHrizontal.m in Sources */,
 				F3A3DF291AE10441008F92B7 /* BaseResponse.m in Sources */,
+				F3C2E4AF1AEDDD1200DF848B /* SPTableView.m in Sources */,
 				F3A3DE6C1AE09EDE008F92B7 /* main.m in Sources */,
 				F3A3DEE91AE0D61B008F92B7 /* HomeViewController.m in Sources */,
 				F3A3DF151AE0FE2C008F92B7 /* AFRequestManager.m in Sources */,

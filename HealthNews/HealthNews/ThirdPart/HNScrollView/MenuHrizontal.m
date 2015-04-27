@@ -44,6 +44,7 @@
         [vButton setBackgroundImage:[UIImage imageNamed:vNormalImageStr] forState:UIControlStateNormal];
         [vButton setBackgroundImage:[UIImage imageNamed:vHeligtImageStr] forState:UIControlStateSelected];
         [vButton setTitle:vTitleStr forState:UIControlStateNormal];
+        vButton.titleLabel.font = [UIFont systemFontOfSize:12.0];
         [vButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [vButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
         [vButton setTag:i];
