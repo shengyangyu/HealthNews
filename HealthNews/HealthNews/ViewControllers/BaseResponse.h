@@ -120,3 +120,52 @@
 @property(nonatomic,retain) HNNewsDetail *yi18;
 
 @end
+
+
+//*****************健康知识*****************//
+/*  公用
+ *  健康知识信息类、健康知识信息详情类
+ */
+@interface HNReadDetail : NSObject
+{
+    NSString *title;
+    NSString *loreclass;
+    NSString *message;
+    NSString *count;
+    NSString *className;
+    NSString *author;
+    NSString *time;
+    NSString *mId;
+    NSString *img;
+    NSString *fcount;
+    NSString *rcount;
+}
+@property(nonatomic,retain) NSString *title;
+@property(nonatomic,retain) NSString *loreclass;
+@property(nonatomic,retain) NSString *message;
+@property(nonatomic,retain) NSString *count;
+@property(nonatomic,retain) NSString *className;
+@property(nonatomic,retain) NSString *author;
+@property(nonatomic,retain) NSString *time;
+@property(nonatomic,retain) NSString *mId;
+@property(nonatomic,retain) NSString *img;
+@property(nonatomic,retain) NSString *fcount;
+@property(nonatomic,retain) NSString *rcount;
+
+@end
+
+/*
+ *  资讯详情类
+ */
+@interface HNReadDetailBase : NSObject
+{
+    NSString *success;
+    NSString *total;
+    NSMutableArray *yi18;
+}
+
+@property(nonatomic,retain) NSString *success;
+@property(nonatomic,retain) NSString *total;
+@property(nonatomic,retain) NSMutableArray *yi18;
+
+@end

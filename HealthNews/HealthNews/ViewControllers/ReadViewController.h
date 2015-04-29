@@ -11,3 +11,12 @@
 @interface ReadViewController : BaseViewController
 
 @end
+
+
+@interface YSYSectionHeaderView : UIView
+@property NSUInteger section;
+@property (nonatomic, weak) UITableView *tableView;
+@end
+
+
+

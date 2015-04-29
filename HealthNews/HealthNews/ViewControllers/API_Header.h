@@ -12,9 +12,8 @@
 #define API_NewsTypeList    @"news/newsclass"  //资讯分类列表
 #define API_NewsList        @"news/list"       //资讯列表
 #define API_NewsDetail      @"news/show"       //资讯详情
-
-
-
+#define API_ReadsTypeList   @"lore/loreclass"  //健康知识分类列表(阅读)
+#define API_ReadsList       @"lore/list"       //健康知识列表(阅读)
 
 
 

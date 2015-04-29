@@ -61,7 +61,7 @@
 
 
 #pragma mark - AFInterfaceAPIDelegate
--(void) interfaceExcuteSuccess:(id)retObj apiName:(NSString*)ApiName
+-(void) interfaceExcuteSuccess:(id)retObj apiName:(NSString*)ApiName apiFlag:(NSString*) ApiFlag
 {
     [self HUDHidden];
     // 分类列表

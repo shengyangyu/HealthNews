@@ -27,6 +27,7 @@
                                                        withType:type];
     m_tableView.delegate = self;
     m_tableView.dataSource = self;
+    m_tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     m_tableView.touchDelegate = self;
     m_tableView.scrollsToTop = YES;
     m_tableView.backgroundColor = [UIColor clearColor];

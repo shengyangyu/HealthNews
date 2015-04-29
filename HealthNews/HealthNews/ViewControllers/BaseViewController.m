@@ -102,18 +102,13 @@
     api = [[AFInterfaceAPIExcute alloc] initWithAPI:_apiUrl retClass:_className Params:_paras setDelegate:self] ;
     [api beginRequest];
 }
-- (void)interfaceExcuteError:(NSError *)error apiName:(NSString *)ApiName
+- (void)interfaceExcuteError:(NSError *)error apiName:(NSString *)ApiName apiFlag:(NSString*) ApiFlag
 {
-    if([[error.userInfo objectForKey:NSLocalizedDescriptionKey] length] > 0)
-    {
+    if([[error.userInfo objectForKey:NSLocalizedDescriptionKey] length] > 0) {
         [self HUDShow:[error.userInfo objectForKey:NSLocalizedDescriptionKey] delay:kShowTitleAfterDelay];
     }
-    else
-    {
-        if(HUD)
-        {
-            [HUD hide:YES];
-        }
+    else if(HUD) {
+        [HUD hide:YES];
     }
 }
 

@@ -63,7 +63,7 @@
     
 }
 
--(void) interfaceExcuteSuccess:(id)retObj apiName:(NSString*)ApiName {
+-(void) interfaceExcuteSuccess:(id)retObj apiName:(NSString*)ApiName apiFlag:(NSString*) ApiFlag {
     
     // 资讯列表
     if ([ApiName isEqualToString:API_NewsList]) {

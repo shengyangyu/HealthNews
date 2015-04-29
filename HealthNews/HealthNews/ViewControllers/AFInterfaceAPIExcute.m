@@ -52,15 +52,8 @@
 {
     Class currentClass = object_getClass(self.delegate);
     if (currentClass == _originalClass) {
-        
-        if (flagCommonApi.length>0) {   // -- 有标记
-            if ([delegate respondsToSelector:@selector(interfaceExcuteSuccess: apiName:)])
-                [delegate interfaceExcuteSuccess:retObj apiName:m_apiName apiFlag:self.flagCommonApi];
-        }
-        else{                           // -- 无标记
-            if ([delegate respondsToSelector:@selector(interfaceExcuteSuccess: apiName:)])
-                [delegate interfaceExcuteSuccess:retObj apiName:m_apiName];
-        }
+        if ([delegate respondsToSelector:@selector(interfaceExcuteSuccess: apiName: apiFlag:)])
+            [delegate interfaceExcuteSuccess:retObj apiName:m_apiName apiFlag:self.flagCommonApi];
     }
 }
 
@@ -68,9 +61,8 @@
 {
     Class currentClass = object_getClass(self.delegate);
     if (currentClass == _originalClass) {
-        
-        if ([delegate respondsToSelector:@selector(interfaceExcuteError: apiName:)])
-            [delegate interfaceExcuteError:error apiName:m_apiName];
+        if ([delegate respondsToSelector:@selector(interfaceExcuteError: apiName:  apiFlag:)])
+            [delegate interfaceExcuteError:error apiName:m_apiName apiFlag:self.flagCommonApi];
     }
 }
 

@@ -51,6 +51,7 @@
         SPTableView *vTableView = [[SPTableView alloc] initWithFrame:CGRectMake(__MainScreen_Width * i, 0, __MainScreen_Width, self.frame.size.height) withStyle:UITableViewStylePlain withType:ULE_TableViewTypeAll];
         vTableView.delegate = self;
         vTableView.dataSource = self;
+        vTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         vTableView.m_type = self.typeArray[i];
         //为table添加嵌套HeadderView
         [self addLoopScrollowView:vTableView];
@@ -153,13 +154,6 @@
     return cell;
 }
 
-+ (NSDate *)methodDateFromString:(NSString *)mString withFormat:(NSString *)mFormat
-{
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"]];
-    [formatter setDateFormat:mFormat];
-    return [formatter dateFromString:mString];
-}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

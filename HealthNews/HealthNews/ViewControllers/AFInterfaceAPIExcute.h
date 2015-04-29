@@ -14,8 +14,7 @@ Class object_getClass(id object);
 @protocol AFInterfaceAPIDelegate <NSObject>
 @optional
 
--(void) interfaceExcuteError:(NSError*)error apiName:(NSString*)ApiName;
--(void) interfaceExcuteSuccess:(id)retObj apiName:(NSString*)ApiName;
+-(void) interfaceExcuteError:(NSError*)error apiName:(NSString*)ApiName apiFlag:(NSString*) ApiFlag;
 -(void) interfaceExcuteSuccess:(id)retObj apiName:(NSString*)ApiName apiFlag:(NSString*) ApiFlag;
 
 @end

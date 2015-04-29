@@ -43,6 +43,11 @@
         [self addSubview:label];
         label;
     });
+    ({
+        UIImageView *line = [[UIImageView alloc] initWithFrame:CGRectMake(0, HC_Cell_height-1, __MainScreen_Width, 0.5)];
+        line.image = [UIImage imageNamed:@"cell_dotline"];
+        [self addSubview:line];
+    });
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

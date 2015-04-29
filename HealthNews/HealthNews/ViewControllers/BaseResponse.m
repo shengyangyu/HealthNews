@@ -84,3 +84,38 @@ yi18;
 
 @end
 
+@implementation HNReadDetail
+
+@synthesize title,
+loreclass,
+message,
+count,
+className,
+author,
+time,
+mId,
+img,
+fcount,
+rcount;
+
+@end
+
+
+@implementation HNReadDetailBase
+
+@synthesize success,
+total,
+yi18;
+
+- (NSMutableArray *)yi18
+{
+    for (int i = 0; i < yi18.count; i++) {
+        if([[yi18 objectAtIndex:i] class] != [HNReadDetail class]) {
+            NSDictionary * _dic = (NSDictionary *)[yi18 objectAtIndex:i];
+            [yi18 replaceObjectAtIndex:i withObject:[_dic dictionaryTo:NSClassFromString(@"HNReadDetail")]];
+        }
+    }
+    return yi18;
+}
+
+@end
