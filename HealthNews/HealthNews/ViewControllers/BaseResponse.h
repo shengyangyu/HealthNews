@@ -214,3 +214,60 @@
 @property(nonatomic,retain) NSString *total;
 
 @end
+
+/*  公用
+ *  食谱信息类、食谱信息详情类
+ */
+@interface HNCookDetailBase : NSObject
+{
+    NSString *name;
+    NSString *img;
+    NSString *tag;
+    NSString *food;
+    NSString *message;
+    NSString *count;
+    NSString *mId;
+    NSString *fcount;
+    NSString *rcount;
+}
+@property(nonatomic,retain) NSString *name;
+@property(nonatomic,retain) NSString *img;
+@property(nonatomic,retain) NSString *tag;
+@property(nonatomic,retain) NSString *food;
+@property(nonatomic,retain) NSString *message;
+@property(nonatomic,retain) NSString *count;
+@property(nonatomic,retain) NSString *mId;
+@property(nonatomic,retain) NSString *fcount;
+@property(nonatomic,retain) NSString *rcount;
+
+@end
+
+/*
+ *  食谱详情类
+ */
+@interface HNCookDetail : NSObject
+{
+    NSString *success;
+    HNCookDetailBase *yi18;
+}
+
+@property(nonatomic,retain) NSString *success;
+@property(nonatomic,retain) HNCookDetailBase *yi18;
+
+@end
+
+/*
+ *  食谱列表类
+ */
+@interface HNCookList : NSObject
+{
+    NSString *success;
+    NSString *total;
+    NSMutableArray *yi18;
+}
+
+@property(nonatomic,retain) NSString *success;
+@property(nonatomic,retain) NSString *total;
+@property(nonatomic,retain) NSMutableArray *yi18;
+
+@end

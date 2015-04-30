@@ -151,3 +151,38 @@ total;
 }
 
 @end
+
+
+@implementation HNCookDetailBase
+@synthesize name,
+img,
+tag,
+food,
+message,
+count,
+mId,
+fcount,
+rcount;
+
+@end
+@implementation HNCookDetail
+@synthesize success,
+yi18;
+
+@end
+@implementation HNCookList
+@synthesize success,
+total,
+yi18;
+- (NSMutableArray *)yi18
+{
+    for (int i = 0; i < yi18.count; i++) {
+        if([[yi18 objectAtIndex:i] class] != [HNCookDetailBase class]) {
+            NSDictionary * _dic = (NSDictionary *)[yi18 objectAtIndex:i];
+            [yi18 replaceObjectAtIndex:i withObject:[_dic dictionaryTo:NSClassFromString(@"HNCookDetailBase")]];
+        }
+    }
+    return yi18;
+}
+
+@end

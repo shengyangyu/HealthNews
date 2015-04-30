@@ -131,7 +131,7 @@ typeSubArray;
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     @try {
-        
+        NSLog(@"%@",apiDic[[apiDic allKeys][indexPath.row]]);
     }
     @catch (NSException *exception) {
         [self HUDShow:@"获取详情错误!" delay:kShowTitleAfterDelay];

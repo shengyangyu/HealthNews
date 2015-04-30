@@ -23,6 +23,8 @@
 		F371920E1AF1FF5B00FAC85A /* 老人健康@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F37192011AF1FF5B00FAC85A /* 老人健康@2x.png */; };
 		F371920F1AF1FF5B00FAC85A /* 育儿宝典@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F37192021AF1FF5B00FAC85A /* 育儿宝典@2x.png */; };
 		F37192121AF204BD00FAC85A /* DetailReadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F37192111AF204BD00FAC85A /* DetailReadViewController.m */; };
+		F37192151AF2329600FAC85A /* FoodListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F37192141AF2329600FAC85A /* FoodListViewController.m */; };
+		F37192181AF232A800FAC85A /* FoodDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F37192171AF232A800FAC85A /* FoodDetailViewController.m */; };
 		F3A3DE6C1AE09EDE008F92B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F3A3DE6B1AE09EDE008F92B7 /* main.m */; };
 		F3A3DE6F1AE09EDE008F92B7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F3A3DE6E1AE09EDE008F92B7 /* AppDelegate.m */; };
 		F3A3DE771AE09EDE008F92B7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3A3DE761AE09EDE008F92B7 /* Images.xcassets */; };
@@ -108,6 +110,10 @@
 		F37192021AF1FF5B00FAC85A /* 育儿宝典@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "育儿宝典@2x.png"; sourceTree = "<group>"; };
 		F37192101AF204BD00FAC85A /* DetailReadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailReadViewController.h; sourceTree = "<group>"; };
 		F37192111AF204BD00FAC85A /* DetailReadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailReadViewController.m; sourceTree = "<group>"; };
+		F37192131AF2329600FAC85A /* FoodListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodListViewController.h; sourceTree = "<group>"; };
+		F37192141AF2329600FAC85A /* FoodListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodListViewController.m; sourceTree = "<group>"; };
+		F37192161AF232A800FAC85A /* FoodDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodDetailViewController.h; sourceTree = "<group>"; };
+		F37192171AF232A800FAC85A /* FoodDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodDetailViewController.m; sourceTree = "<group>"; };
 		F3A3DE661AE09EDE008F92B7 /* HealthNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3A3DE6A1AE09EDE008F92B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3A3DE6B1AE09EDE008F92B7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -363,6 +369,10 @@
 				F37192111AF204BD00FAC85A /* DetailReadViewController.m */,
 				F3A3DF031AE0E1A4008F92B7 /* FoodViewController.h */,
 				F3A3DF041AE0E1A5008F92B7 /* FoodViewController.m */,
+				F37192131AF2329600FAC85A /* FoodListViewController.h */,
+				F37192141AF2329600FAC85A /* FoodListViewController.m */,
+				F37192161AF232A800FAC85A /* FoodDetailViewController.h */,
+				F37192171AF232A800FAC85A /* FoodDetailViewController.m */,
 				F3A3DF061AE0E1B1008F92B7 /* UserViewController.h */,
 				F3A3DF071AE0E1B1008F92B7 /* UserViewController.m */,
 			);
@@ -644,9 +654,11 @@
 				F3A3DF0E1AE0ECDC008F92B7 /* RefreshTableView.m in Sources */,
 				F3A3DEC21AE0B5B1008F92B7 /* BaseViewController.m in Sources */,
 				F3A3DF311AE10E71008F92B7 /* DetailNewsViewController.m in Sources */,
+				F37192151AF2329600FAC85A /* FoodListViewController.m in Sources */,
 				F3B114AA1AF0880000E71AEF /* NSString+HXAddtions.m in Sources */,
 				F3A3DF021AE0E197008F92B7 /* ReadViewController.m in Sources */,
 				F3AFD65E1AE8FC2400060172 /* ScrollPageView.m in Sources */,
+				F37192181AF232A800FAC85A /* FoodDetailViewController.m in Sources */,
 				F3A3DEEF1AE0D8F2008F92B7 /* NNPNavigation.m in Sources */,
 				F3A3DF0B1AE0E4D1008F92B7 /* BaseTableViewController.m in Sources */,
 				F3AFD6581AE8FB5900060172 /* SGFocusImageItem.m in Sources */,
