@@ -33,5 +33,7 @@
 - (void)setWillBePressedHandler:(void (^)(NSUInteger index))handler;
 
 - (void)selectIndex:(NSInteger)index animated:(BOOL)animated; // sets the index without calling the handler block
-
+// 设置slider移动
+- (void)sliderViewMove:(CGFloat)index_x;
+@property (nonatomic, assign) BOOL needPan;
 @end

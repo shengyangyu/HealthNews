@@ -1,5 +1,5 @@
 //
-//  DetailViewController.h
+//  DetailNewsViewController.h
 //  HealthNews
 //
 //  Created by yushengyang on 15/4/17.
@@ -8,6 +8,6 @@
 
 #import "BaseViewController.h"
 
-@interface DetailViewController : BaseViewController
+@interface DetailNewsViewController : BaseViewController
 
 @end

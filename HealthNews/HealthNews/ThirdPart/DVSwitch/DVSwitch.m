@@ -323,6 +323,9 @@
 
 - (void)sliderMoved:(UIPanGestureRecognizer *)rec
 {
+    if (!self.needPan) {
+        return;// 目前不需要滑块支持拖动
+    }
     if (rec.state == UIGestureRecognizerStateChanged) {
         
         CGRect oldFrame = self.sliderView.frame;
@@ -412,6 +415,20 @@
                 self.handlerBlock(self.selectedIndex);
             }
         }
+    }
+}
+
+- (void)sliderViewMove:(CGFloat)index_x {
+    // 超标不滑动
+    if (index_x < 0|| index_x > ([self.strings count]-1)) {
+        return;
+    }
+    CGRect oldFrame = self.sliderView.frame;
+    self.sliderView.frame = CGRectMake(index_x*self.backgroundView.frame.size.width/([self.strings count])+self.sliderOffset, self.sliderView.frame.origin.y, self.sliderView.frame.size.width, self.sliderView.frame.size.height);
+    CGRect newFrame = self.sliderView.frame;
+    CGRect offRect = CGRectMake(newFrame.origin.x - oldFrame.origin.x, newFrame.origin.y - oldFrame.origin.y, 0, 0);
+    for (UILabel *label in self.onTopLabels) {
+        label.frame = CGRectMake(label.frame.origin.x - offRect.origin.x, label.frame.origin.y - offRect.origin.y, label.frame.size.width, label.frame.size.height);
     }
 }
 

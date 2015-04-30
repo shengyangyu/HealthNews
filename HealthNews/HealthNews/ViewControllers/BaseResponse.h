@@ -155,9 +155,9 @@
 @end
 
 /*
- *  资讯详情类
+ *  知识详情列表类
  */
-@interface HNReadDetailBase : NSObject
+@interface HNReadsList : NSObject
 {
     NSString *success;
     NSString *total;
@@ -167,5 +167,50 @@
 @property(nonatomic,retain) NSString *success;
 @property(nonatomic,retain) NSString *total;
 @property(nonatomic,retain) NSMutableArray *yi18;
+
+@end
+
+/*
+ *  知识详情类
+ */
+@interface HNReadDetailBase : NSObject
+{
+    NSString *success;
+    HNReadDetail *yi18;
+}
+
+@property(nonatomic,retain) NSString *success;
+@property(nonatomic,retain) HNReadDetail *yi18;
+
+@end
+
+//*****************食谱分类*****************//
+/*
+ *  食谱分类列表详细类
+ */
+@interface HNCookType : NSObject
+{
+    NSString *name;
+    NSString *mId;
+    NSString *cookclass;
+}
+@property(nonatomic,retain) NSString *name;
+@property(nonatomic,retain) NSString *mId;
+@property(nonatomic,retain) NSString *cookclass;
+
+@end
+
+/*
+ *  食谱分类列表类
+ */
+@interface HNCookTypeList : NSObject
+{
+    NSString *success;
+    NSMutableArray *yi18;
+    NSString *total;
+}
+@property(nonatomic,retain) NSString *success;
+@property(nonatomic,retain) NSMutableArray *yi18;
+@property(nonatomic,retain) NSString *total;
 
 @end

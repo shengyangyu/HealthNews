@@ -101,7 +101,7 @@ rcount;
 @end
 
 
-@implementation HNReadDetailBase
+@implementation HNReadsList
 
 @synthesize success,
 total,
@@ -113,6 +113,38 @@ yi18;
         if([[yi18 objectAtIndex:i] class] != [HNReadDetail class]) {
             NSDictionary * _dic = (NSDictionary *)[yi18 objectAtIndex:i];
             [yi18 replaceObjectAtIndex:i withObject:[_dic dictionaryTo:NSClassFromString(@"HNReadDetail")]];
+        }
+    }
+    return yi18;
+}
+
+@end
+
+
+@implementation HNReadDetailBase
+@synthesize success,
+yi18;
+
+@end
+
+@implementation HNCookType
+@synthesize name,
+mId,
+cookclass;
+
+@end
+
+@implementation HNCookTypeList
+@synthesize success,
+yi18,
+total;
+
+- (NSMutableArray *)yi18
+{
+    for (int i = 0; i < yi18.count; i++) {
+        if([[yi18 objectAtIndex:i] class] != [HNCookType class]) {
+            NSDictionary * _dic = (NSDictionary *)[yi18 objectAtIndex:i];
+            [yi18 replaceObjectAtIndex:i withObject:[_dic dictionaryTo:NSClassFromString(@"HNCookType")]];
         }
     }
     return yi18;

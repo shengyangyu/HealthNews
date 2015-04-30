@@ -29,7 +29,7 @@
 
 @end
 
-@interface CustomerNaviVC : NNPNavigation
+@interface CustomerNaviVC : UINavigationController
 {
     UIImage *_backgroundImage;
 }

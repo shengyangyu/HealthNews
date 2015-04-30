@@ -10,6 +10,7 @@
 #import "DVSwitch.h"
 #import "RefreshTableView.h"
 #import "HomeCell.h"
+#import "DetailReadViewController.h"
 
 @interface ReadViewController ()<UIScrollViewDelegate,CustomerTableViewDelegate,UITableViewDataSource,UITableViewDelegate>
 {
@@ -20,6 +21,9 @@
     // 控制刷新
     dispatch_group_t downloadGroup;
     BOOL canUpdate;
+    // 滑动
+    BOOL canUseDelegate;
+    NSInteger mCurrentPage;
 }
 //请求数组
 @property (strong, nonatomic) NSMutableArray *apiArray;
@@ -54,6 +58,7 @@ apiDic;
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     // [self titleLabel:@"健康常识"];
+    [self setData];
     [self setUI];
 }
 
@@ -70,16 +75,15 @@ apiDic;
     self.navigationItem.titleView = mSwitcher;
     __weak __typeof(self)weakSelf = self;
     [mSwitcher setPressedHandler:^(NSUInteger index) {
-        if (index == 0) {
-            if (leftArray == nil || [leftArray count] == 0) {
-                // 刷新
-                [weakSelf.leftTable.header beginRefreshing];
-            }
-        }else if (index == 1) {
-            if (apiDic == nil || [[apiDic allKeys] count] == 0) {
-                // 刷新
-                [weakSelf.rightTable.header beginRefreshing];
-            }
+        // 刷新
+        if (index == 0 && (leftArray == nil || [leftArray count] == 0)) {
+            [weakSelf.leftTable.header beginRefreshing];
+        }else if (index == 1 && (apiDic == nil || [[apiDic allKeys] count] == 0)) {
+            [weakSelf.rightTable.header beginRefreshing];
+        }
+        // 移动
+        if(index != mCurrentPage) {
+            [weakSelf moveScrollowViewAthIndex:index];
         }
     }];
     // scrollview
@@ -118,7 +122,8 @@ apiDic;
 }
 
 - (void)setData {
-
+    apiArray = [[NSMutableArray alloc] init];
+    apiDic = [[NSMutableDictionary alloc] init];
 }
 
 #pragma mark -推荐列表
@@ -127,7 +132,7 @@ apiDic;
                                    @{@"page":[NSString stringWithFormat:@"%@",@(m_indexNum)],
                                      @"limit":@"20",
                                      @"type":@"id"}];
-    hotList = [[AFInterfaceAPIExcute alloc] initWithAPI:API_ReadsList retClass:@"HNReadDetailBase" Params:params setDelegate:self];
+    hotList = [[AFInterfaceAPIExcute alloc] initWithAPI:API_ReadsList retClass:@"HNReadsList" Params:params setDelegate:self];
     [hotList setFlagCommonApi:@"-1"];
     [hotList beginRequest];
 
@@ -137,8 +142,8 @@ apiDic;
     [typeList beginRequest];
 }
 - (void)requestTypesList {
-    apiArray = [[NSMutableArray alloc] init];
-    apiDic = [[NSMutableDictionary alloc] init];
+    [apiArray removeAllObjects];
+    [apiDic removeAllObjects];
     downloadGroup = dispatch_group_create();//创建组
     //并行发出请求 发出的顺序不定 不是按照顺序做的
     dispatch_apply([mTypeArray count], dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^(size_t i) {
@@ -148,7 +153,7 @@ apiDic;
                                          @"limit":@"2",
                                          @"type":@"id",
                                          @"id":mClass.mId}];
-        AFInterfaceAPIExcute *tmpApi = [[AFInterfaceAPIExcute alloc] initWithAPI:API_ReadsList retClass:@"HNReadDetailBase" Params:params setDelegate:self] ;
+        AFInterfaceAPIExcute *tmpApi = [[AFInterfaceAPIExcute alloc] initWithAPI:API_ReadsList retClass:@"HNReadsList" Params:params setDelegate:self] ;
         [tmpApi setFlagCommonApi:mClass.mId];
         [tmpApi beginRequest];
         [apiArray addObject:tmpApi];
@@ -168,7 +173,7 @@ apiDic;
                 if (m_indexNum == 1) {
                     leftArray = [[NSMutableArray alloc] init];
                 }
-                HNReadDetailBase *mClass = (HNReadDetailBase *)retObj;
+                HNReadsList *mClass = (HNReadsList *)retObj;
                 if ([mClass.success boolValue] && [mClass.yi18 count] != 0) {
                     m_indexNum ++;
                     [leftArray addObjectsFromArray:mClass.yi18];
@@ -184,7 +189,7 @@ apiDic;
             for (HNNewsType *mClass1 in mTypeArray) {
                 @try {
                     if([mClass1.mId isEqualToString:ApiFlag]) {
-                        HNReadDetailBase *mClass = (HNReadDetailBase *)retObj;
+                        HNReadsList *mClass = (HNReadsList *)retObj;
                         if ([mClass.success boolValue] && [mClass.yi18 count] != 0) {
                             [apiDic setObject:mClass.yi18 forKey:mClass1.name];
                         }
@@ -253,7 +258,50 @@ apiDic;
     YSYSectionHeaderView *sectionHead = [[YSYSectionHeaderView alloc] init];
     sectionHead.section = section;
     sectionHead.tableView = tableView;
+    ({
+        CGFloat offset_x = 10.0f;
+        CGFloat offset_y = 6.0f;
+        CGFloat icon_size = 30.0f;
+        HNNewsType *mClass = (HNNewsType *)mTypeArray[section];
+        // back
+        UIView *back = [[UIView alloc] initWithFrame:CGRectMake(0, 5, __MainScreen_Width, 45.0)];
+        back.backgroundColor = [UIColor whiteColor];
+        [sectionHead addSubview:back];
+        // line
+        UIImageView *line = [[UIImageView alloc] initWithFrame:CGRectMake(0, 5, __MainScreen_Width, 0.5)];
+        line.image = [UIImage imageNamed:@"cell_dotline"];
+        [sectionHead addSubview:line];
+        // icon
+        UIImageView *icon = [[UIImageView alloc] initWithFrame:CGRectMake(offset_x, (50-offset_y-icon_size), icon_size, icon_size)];
+        icon.image = [UIImage imageNamed:mClass.name];
+        [sectionHead addSubview:icon];
+        // right
+        UIImageView *right = [[UIImageView alloc] initWithFrame:CGRectMake(__MainScreen_Width-offset_x-12, (45-13)/2+5, 12, 13)];
+        right.image = [UIImage imageNamed:@"header_arrow"];
+        [sectionHead addSubview:right];
+        // text
+        UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(icon_size+2*offset_x, (45-15)/2+5, 200, 15)];
+        title.font = [UIFont boldSystemFontOfSize:14.0f];
+        title.text = mClass.name;
+        [sectionHead addSubview:title];
+        // line
+        UIImageView *line2 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 49, __MainScreen_Width, 0.5)];
+        line2.image = [UIImage imageNamed:@"cell_dotline"];
+        [sectionHead addSubview:line2];
+        // button
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [btn setFrame:CGRectMake(0, 0, __MainScreen_Width, 50.0f)];
+        [btn addTarget:self action:@selector(headerMethod:) forControlEvents:UIControlEventTouchUpInside];
+        btn.tag = 1000+section;
+        [sectionHead addSubview:btn];
+    });
     return sectionHead;
+}
+
+- (void)headerMethod:(UIButton *)sender {
+    NSInteger index = (sender.tag - 1000);
+    HNNewsType *mClass = (HNNewsType *)mTypeArray[index];
+    // detail info
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -286,22 +334,21 @@ apiDic;
     }
     @try {
         if (tableView == leftTable) {
-            HNNewsDetail *mclass = (HNNewsDetail *) leftArray[indexPath.row];
+            HNReadDetail *mclass = (HNReadDetail *) leftArray[indexPath.row];
             [cell.mIconImg setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",kImageUrl,mclass.img]] placeholderImage:[UIImage imageNamed:@"hc_cell_icon"]];
             cell.mTitleLab.text = mclass.title;
             cell.mTimeLab.text = [NSString changeTimeMethod:mclass.time];
         }
         else if(tableView == rightTable) {
             HNNewsType *mClass1 = (HNNewsType *)mTypeArray[indexPath.section];
-            HNNewsDetail *mclass = (HNNewsDetail *)(NSArray *)apiDic[mClass1.name][indexPath.row];
+            HNReadDetail *mclass = (HNReadDetail *)(NSArray *)apiDic[mClass1.name][indexPath.row];
             [cell.mIconImg setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",kImageUrl,mclass.img]] placeholderImage:[UIImage imageNamed:@"hc_cell_icon"]];
             cell.mTitleLab.text = mclass.title;
             cell.mTimeLab.text = [NSString changeTimeMethod:mclass.time];
         }
-        
     }
     @catch (NSException *exception) {
-        
+        [self HUDShow:@"初始化信息错误!" delay:kShowTitleAfterDelay];
     }
     
     return cell;
@@ -311,19 +358,65 @@ apiDic;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (tableView == leftTable) {
-        @try {
-//            SPTableView *tmp = (SPTableView *)tableView;
-//            HNNewsDetail *mclass = (HNNewsDetail *)tmp.mInfoArray[indexPath.row];
-//            NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-//            [dic setObject:mclass.mId forKey:@"id"];
-//            [self.supVC pushNewViewController:@"DetailViewController" isNibPage:NO withData:dic];
+    @try {
+        if (tableView == leftTable) {
+            HNReadDetail *mclass = (HNReadDetail *)leftArray[indexPath.row];
+            NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+            [dic setObject:mclass.mId forKey:@"id"];
+            [self pushNewViewController:@"DetailReadViewController" isNibPage:NO withData:dic];
         }
-        @catch (NSException *exception) {
-            //[self HUDShow:@"获取详情错误!" delay:kShowTitleAfterDelay];
+        else if (tableView == rightTable) {
+            HNNewsType *mClass1 = (HNNewsType *)mTypeArray[indexPath.section];
+            HNReadDetail *mclass = (HNReadDetail *)(NSArray *)apiDic[mClass1.name][indexPath.row];
+            NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+            [dic setObject:mclass.mId forKey:@"id"];
+            [self pushNewViewController:@"DetailReadViewController" isNibPage:NO withData:dic];
         }
     }
+    @catch (NSException *exception) {
+        [self HUDShow:@"获取详情错误!" delay:kShowTitleAfterDelay];
+    }
+    
 }
+
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    canUseDelegate = YES;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    // 点击按钮
+    if(!canUseDelegate) {
+        return;
+    }
+    [mSwitcher sliderViewMove:(mScrollView.contentOffset.x/__MainScreen_Width)];
+    NSInteger page = (mScrollView.contentOffset.x+__MainScreen_Width/2.0) / __MainScreen_Width;
+    if (mCurrentPage == page) {
+        return;
+    }
+    mCurrentPage = page;
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    // 移动
+    if (mScrollView.contentOffset.x <= 10 ||
+        mScrollView.contentOffset.x >= (__MainScreen_Width-10)) {
+        [mSwitcher forceSelectedIndex:mCurrentPage animated:NO];
+        canUseDelegate = NO;
+    }
+}
+
+#pragma mark 移动ScrollView到某个页面
+-(void)moveScrollowViewAthIndex:(NSInteger)aIndex {
+    canUseDelegate = NO;
+    CGRect vMoveRect = CGRectMake(__MainScreen_Width * aIndex, 0, __viewContent_hight3, __MainScreen_Width);
+    [mScrollView scrollRectToVisible:vMoveRect animated:YES];
+    mCurrentPage = aIndex;
+}
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -337,9 +430,11 @@ apiDic;
 
 @implementation YSYSectionHeaderView
 - (void)setFrame:(CGRect)frame {
+    self.backgroundColor = [UIColor groupTableViewBackgroundColor];
     CGRect sectionRect = [self.tableView rectForSection:self.section];
     CGRect newFrame = CGRectMake(CGRectGetMinX(frame), CGRectGetMinY(sectionRect), CGRectGetWidth(frame), CGRectGetHeight(frame));
     [super setFrame:newFrame];
+    
 }
 @end
 

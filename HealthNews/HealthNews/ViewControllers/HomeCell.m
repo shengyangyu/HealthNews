@@ -24,6 +24,8 @@
 {
     self.mIconImg = ({
         UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(HC_Cell_Offset, HC_Cell_Offset, HC_Cell_height, HC_Cell_height-2*HC_Cell_Offset)];
+        img.clipsToBounds = YES;
+        img.contentMode = UIViewContentModeScaleAspectFill;
         [self addSubview:img];
         img;
     });
@@ -36,7 +38,7 @@
         label;
     });
     self.mTimeLab = ({
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, HC_Cell_height-HC_Cell_Text_height-HC_Cell_Offset, __MainScreen_Width, HC_Cell_Text_height)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, HC_Cell_height-HC_Cell_Text_height-HC_Cell_Offset, __MainScreen_Width-HC_Cell_Offset, HC_Cell_Text_height)];
         label.font = [UIFont systemFontOfSize:12];
         label.textColor = [UIColor convertHexToRGB:@"A6A6A6"];
         label.textAlignment = NSTextAlignmentRight;

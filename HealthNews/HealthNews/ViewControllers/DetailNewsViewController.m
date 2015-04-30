@@ -1,14 +1,14 @@
 //
-//  DetailViewController.m
+//  DetailNewsViewController.m
 //  HealthNews
 //
 //  Created by yushengyang on 15/4/17.
 //  Copyright (c) 2015年 yushengyang. All rights reserved.
 //
 
-#import "DetailViewController.h"
+#import "DetailNewsViewController.h"
 
-@interface DetailViewController ()
+@interface DetailNewsViewController ()
 {
     AFInterfaceAPIExcute *apiNewsDetail;//资讯详情
     UIWebView *mWebView;
@@ -16,7 +16,7 @@
 
 @end
 
-@implementation DetailViewController
+@implementation DetailNewsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

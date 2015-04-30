@@ -134,8 +134,8 @@
     if (controllerName.length <= 0)
         return;
     // 保存截图
-    CustomerNaviVC *mNavi = (CustomerNaviVC *)self.navigationController;
-    [mNavi addScreenshot];
+//    CustomerNaviVC *mNavi = (CustomerNaviVC *)self.navigationController;
+//    [mNavi addScreenshot];
     
     Class class_Page = NSClassFromString((NSString *)controllerName);
     if (class_Page != nil) {

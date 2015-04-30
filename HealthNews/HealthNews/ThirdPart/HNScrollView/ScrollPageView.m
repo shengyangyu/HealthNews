@@ -66,7 +66,7 @@
     mNeedUseDelegate = NO;
     CGRect vMoveRect = CGRectMake(self.frame.size.width * aIndex, 0, self.frame.size.width, self.frame.size.width);
     [_scrollView scrollRectToVisible:vMoveRect animated:YES];
-    mCurrentPage= aIndex;
+    mCurrentPage = aIndex;
     if ([_delegate respondsToSelector:@selector(didScrollPageViewChangedPage:)]) {
         [_delegate didScrollPageViewChangedPage:mCurrentPage];
     }
@@ -163,7 +163,7 @@
         HNNewsDetail *mclass = (HNNewsDetail *)tmp.mInfoArray[indexPath.row];
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
         [dic setObject:mclass.mId forKey:@"id"];
-        [self.supVC pushNewViewController:@"DetailViewController" isNibPage:NO withData:dic];
+        [self.supVC pushNewViewController:@"DetailNewsViewController" isNibPage:NO withData:dic];
     }
     @catch (NSException *exception) {
         //[self HUDShow:@"获取详情错误!" delay:kShowTitleAfterDelay];
@@ -174,7 +174,7 @@
     if (![item.tag isEqualToString:@"-1"]) {
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
         [dic setObject:item.tag forKey:@"id"];
-        [self.supVC pushNewViewController:@"DetailViewController" isNibPage:NO withData:dic];
+        [self.supVC pushNewViewController:@"DetailNewsViewController" isNibPage:NO withData:dic];
     }
 }
 

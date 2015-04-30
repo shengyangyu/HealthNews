@@ -7,7 +7,7 @@
 //
 
 #import "HomeViewController.h"
-#import "DetailViewController.h"
+#import "DetailNewsViewController.h"
 #import "MenuHrizontal.h"
 #import "ScrollPageView.h"
 
