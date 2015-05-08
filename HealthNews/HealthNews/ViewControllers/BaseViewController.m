@@ -129,13 +129,13 @@
  */
 - (void)pushNewViewController:(NSString *)controllerName
                     isNibPage:(BOOL)isNib
-                     withData:(NSMutableDictionary *)mData
-{
+                     withData:(NSMutableDictionary *)mData {
+    
     if (controllerName.length <= 0)
         return;
     // 保存截图
-//    CustomerNaviVC *mNavi = (CustomerNaviVC *)self.navigationController;
-//    [mNavi addScreenshot];
+    CustomerNaviVC *mNavi = (CustomerNaviVC *)self.navigationController;
+    [mNavi addScreenshot];
     
     Class class_Page = NSClassFromString((NSString *)controllerName);
     if (class_Page != nil) {
@@ -214,7 +214,8 @@
 }
 
 #pragma mark - 导航条右按钮
-- (void)setRightImageButton:(NSString*)imgUrl{
+- (void)setRightImageButton:(NSString*)imgUrl {
+    
     UIView* rightView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
     rightView.backgroundColor = [UIColor clearColor];
     UIButton *opinion = [UIButton buttonWithType:UIButtonTypeCustom];

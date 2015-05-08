@@ -55,7 +55,7 @@
     
     UIImage *finishedImage = [UIImage imageNamed:@"tb_normal_background"];
     UIImage *unfinishedImage = [UIImage imageNamed:@"tb_normal_background"];
-    NSArray *tabBarItemImages = @[@"tb_news", @"tb_reader", @"tb_me", @"tb_found"];
+    NSArray *tabBarItemImages = @[@"tb_news", @"tb_reader", @"tb_found", @"tb_me"];
     NSArray *tabBarTitles = @[@"资讯",@"阅读",@"食谱",@"我"];
     
     for (NSInteger index = 0; index < [tabBarTitles count]; index ++) {

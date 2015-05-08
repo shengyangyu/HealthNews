@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		E93E90AFCA8BEEB0AE98FA82 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3044930672FB8BC6F571264A /* libPods.a */; };
+		F369D6941AFCB77F004EF41F /* UIScrollView+TwitterCover.m in Sources */ = {isa = PBXBuildFile; fileRef = F369D6931AFCB77F004EF41F /* UIScrollView+TwitterCover.m */; };
+		F369D6971AFCB87F004EF41F /* UleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = F369D6961AFCB87F004EF41F /* UleScrollView.m */; };
+		F369D69A1AFCBEDE004EF41F /* UleSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F369D6991AFCBEDE004EF41F /* UleSectionHeaderView.m */; };
+		F369D6A01AFCC10A004EF41F /* avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = F369D69C1AFCC10A004EF41F /* avatar.png */; };
+		F369D6A11AFCC10A004EF41F /* Clouds.png in Resources */ = {isa = PBXBuildFile; fileRef = F369D69D1AFCC10A004EF41F /* Clouds.png */; };
+		F369D6A21AFCC10A004EF41F /* Clouds@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F369D69E1AFCC10A004EF41F /* Clouds@2x.png */; };
+		F369D6A31AFCC10A004EF41F /* Clouds@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F369D69F1AFCC10A004EF41F /* Clouds@3x.png */; };
 		F37191F41AF1FD0900FAC85A /* header_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F37191F31AF1FD0900FAC85A /* header_arrow@2x.png */; };
 		F37192031AF1FF5B00FAC85A /* 健康饮食@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F37191F61AF1FF5B00FAC85A /* 健康饮食@2x.png */; };
 		F37192041AF1FF5B00FAC85A /* 减肥瘦身@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F37191F71AF1FF5B00FAC85A /* 减肥瘦身@2x.png */; };
@@ -25,6 +32,9 @@
 		F37192121AF204BD00FAC85A /* DetailReadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F37192111AF204BD00FAC85A /* DetailReadViewController.m */; };
 		F37192151AF2329600FAC85A /* FoodListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F37192141AF2329600FAC85A /* FoodListViewController.m */; };
 		F37192181AF232A800FAC85A /* FoodDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F37192171AF232A800FAC85A /* FoodDetailViewController.m */; };
+		F37A84791AFC948B00BEFD98 /* JRSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = F37A84741AFC948B00BEFD98 /* JRSwizzle.m */; };
+		F37A847A1AFC948B00BEFD98 /* UIViewController+UleHiddenNavi.m in Sources */ = {isa = PBXBuildFile; fileRef = F37A84761AFC948B00BEFD98 /* UIViewController+UleHiddenNavi.m */; };
+		F37A847B1AFC948B00BEFD98 /* UleHiddenForScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = F37A84781AFC948B00BEFD98 /* UleHiddenForScroller.m */; };
 		F3A3DE6C1AE09EDE008F92B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F3A3DE6B1AE09EDE008F92B7 /* main.m */; };
 		F3A3DE6F1AE09EDE008F92B7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F3A3DE6E1AE09EDE008F92B7 /* AppDelegate.m */; };
 		F3A3DE771AE09EDE008F92B7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3A3DE761AE09EDE008F92B7 /* Images.xcassets */; };
@@ -94,6 +104,16 @@
 		28A0C76551DBB3C720D61BAD /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		3044930672FB8BC6F571264A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBD208970153BFADF14573F5 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		F369D6921AFCB77F004EF41F /* UIScrollView+TwitterCover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TwitterCover.h"; sourceTree = "<group>"; };
+		F369D6931AFCB77F004EF41F /* UIScrollView+TwitterCover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TwitterCover.m"; sourceTree = "<group>"; };
+		F369D6951AFCB87F004EF41F /* UleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UleScrollView.h; sourceTree = "<group>"; };
+		F369D6961AFCB87F004EF41F /* UleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UleScrollView.m; sourceTree = "<group>"; };
+		F369D6981AFCBEDE004EF41F /* UleSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UleSectionHeaderView.h; sourceTree = "<group>"; };
+		F369D6991AFCBEDE004EF41F /* UleSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UleSectionHeaderView.m; sourceTree = "<group>"; };
+		F369D69C1AFCC10A004EF41F /* avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar.png; sourceTree = "<group>"; };
+		F369D69D1AFCC10A004EF41F /* Clouds.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Clouds.png; sourceTree = "<group>"; };
+		F369D69E1AFCC10A004EF41F /* Clouds@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Clouds@2x.png"; sourceTree = "<group>"; };
+		F369D69F1AFCC10A004EF41F /* Clouds@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Clouds@3x.png"; sourceTree = "<group>"; };
 		F37191F31AF1FD0900FAC85A /* header_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "header_arrow@2x.png"; sourceTree = "<group>"; };
 		F37191F61AF1FF5B00FAC85A /* 健康饮食@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "健康饮食@2x.png"; sourceTree = "<group>"; };
 		F37191F71AF1FF5B00FAC85A /* 减肥瘦身@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "减肥瘦身@2x.png"; sourceTree = "<group>"; };
@@ -114,6 +134,12 @@
 		F37192141AF2329600FAC85A /* FoodListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodListViewController.m; sourceTree = "<group>"; };
 		F37192161AF232A800FAC85A /* FoodDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodDetailViewController.h; sourceTree = "<group>"; };
 		F37192171AF232A800FAC85A /* FoodDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodDetailViewController.m; sourceTree = "<group>"; };
+		F37A84731AFC948B00BEFD98 /* JRSwizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JRSwizzle.h; sourceTree = "<group>"; };
+		F37A84741AFC948B00BEFD98 /* JRSwizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JRSwizzle.m; sourceTree = "<group>"; };
+		F37A84751AFC948B00BEFD98 /* UIViewController+UleHiddenNavi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+UleHiddenNavi.h"; sourceTree = "<group>"; };
+		F37A84761AFC948B00BEFD98 /* UIViewController+UleHiddenNavi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+UleHiddenNavi.m"; sourceTree = "<group>"; };
+		F37A84771AFC948B00BEFD98 /* UleHiddenForScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UleHiddenForScroller.h; sourceTree = "<group>"; };
+		F37A84781AFC948B00BEFD98 /* UleHiddenForScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UleHiddenForScroller.m; sourceTree = "<group>"; };
 		F3A3DE661AE09EDE008F92B7 /* HealthNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3A3DE6A1AE09EDE008F92B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3A3DE6B1AE09EDE008F92B7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -243,6 +269,36 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F369D6901AFCB778004EF41F /* UleScrollTopView */ = {
+			isa = PBXGroup;
+			children = (
+				F369D6911AFCB77F004EF41F /* TwitterCover */,
+				F369D6951AFCB87F004EF41F /* UleScrollView.h */,
+				F369D6961AFCB87F004EF41F /* UleScrollView.m */,
+			);
+			path = UleScrollTopView;
+			sourceTree = "<group>";
+		};
+		F369D6911AFCB77F004EF41F /* TwitterCover */ = {
+			isa = PBXGroup;
+			children = (
+				F369D6921AFCB77F004EF41F /* UIScrollView+TwitterCover.h */,
+				F369D6931AFCB77F004EF41F /* UIScrollView+TwitterCover.m */,
+			);
+			path = TwitterCover;
+			sourceTree = "<group>";
+		};
+		F369D69B1AFCC10A004EF41F /* user */ = {
+			isa = PBXGroup;
+			children = (
+				F369D69C1AFCC10A004EF41F /* avatar.png */,
+				F369D69D1AFCC10A004EF41F /* Clouds.png */,
+				F369D69E1AFCC10A004EF41F /* Clouds@2x.png */,
+				F369D69F1AFCC10A004EF41F /* Clouds@3x.png */,
+			);
+			path = user;
+			sourceTree = "<group>";
+		};
 		F37191F51AF1FF5B00FAC85A /* type_image */ = {
 			isa = PBXGroup;
 			children = (
@@ -261,6 +317,27 @@
 				F37192021AF1FF5B00FAC85A /* 育儿宝典@2x.png */,
 			);
 			path = type_image;
+			sourceTree = "<group>";
+		};
+		F37A84711AFC948B00BEFD98 /* UleHiddenNavigtionBar */ = {
+			isa = PBXGroup;
+			children = (
+				F37A84721AFC948B00BEFD98 /* JRSwizzle */,
+				F37A84751AFC948B00BEFD98 /* UIViewController+UleHiddenNavi.h */,
+				F37A84761AFC948B00BEFD98 /* UIViewController+UleHiddenNavi.m */,
+				F37A84771AFC948B00BEFD98 /* UleHiddenForScroller.h */,
+				F37A84781AFC948B00BEFD98 /* UleHiddenForScroller.m */,
+			);
+			path = UleHiddenNavigtionBar;
+			sourceTree = "<group>";
+		};
+		F37A84721AFC948B00BEFD98 /* JRSwizzle */ = {
+			isa = PBXGroup;
+			children = (
+				F37A84731AFC948B00BEFD98 /* JRSwizzle.h */,
+				F37A84741AFC948B00BEFD98 /* JRSwizzle.m */,
+			);
+			path = JRSwizzle;
 			sourceTree = "<group>";
 		};
 		F3A3DE5D1AE09EDE008F92B7 = {
@@ -309,6 +386,7 @@
 		F3A3DE921AE0A265008F92B7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F369D69B1AFCC10A004EF41F /* user */,
 				F37191F51AF1FF5B00FAC85A /* type_image */,
 				F37191F31AF1FD0900FAC85A /* header_arrow@2x.png */,
 				F3B114AB1AF0E28900E71AEF /* cell_dotline@2x.png */,
@@ -375,6 +453,8 @@
 				F37192171AF232A800FAC85A /* FoodDetailViewController.m */,
 				F3A3DF061AE0E1B1008F92B7 /* UserViewController.h */,
 				F3A3DF071AE0E1B1008F92B7 /* UserViewController.m */,
+				F369D6981AFCBEDE004EF41F /* UleSectionHeaderView.h */,
+				F369D6991AFCBEDE004EF41F /* UleSectionHeaderView.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -428,6 +508,8 @@
 		F3A3DF161AE102E0008F92B7 /* ThirdPart */ = {
 			isa = PBXGroup;
 			children = (
+				F369D6901AFCB778004EF41F /* UleScrollTopView */,
+				F37A84711AFC948B00BEFD98 /* UleHiddenNavigtionBar */,
 				F3B114A41AF087BA00E71AEF /* DVSwitch */,
 				F3AFD64F1AE8F97C00060172 /* HNScrollView */,
 				F3A3DF171AE102E0008F92B7 /* JsonExtend */,
@@ -565,6 +647,7 @@
 				F3A3DEE11AE0B76A008F92B7 /* bobo_navi_back_highlighted@2x.png in Resources */,
 				F3A3DE9A1AE0A5D4008F92B7 /* Icon.png in Resources */,
 				F3A3DE9D1AE0A5D4008F92B7 /* Icon_120x120.png in Resources */,
+				F369D6A01AFCC10A004EF41F /* avatar.png in Resources */,
 				F3A3DEE31AE0B76A008F92B7 /* night_navi_back@2x.png in Resources */,
 				F37192081AF1FF5B00FAC85A /* 女性保养@2x.png in Resources */,
 				F37192061AF1FF5B00FAC85A /* 四季养生@2x.png in Resources */,
@@ -576,6 +659,7 @@
 				F3A3DE771AE09EDE008F92B7 /* Images.xcassets in Resources */,
 				F3A3DEDC1AE0B76A008F92B7 /* navi_back@2x.png in Resources */,
 				F3C2E4B31AEDE6CD00DF848B /* normal.png in Resources */,
+				F369D6A31AFCC10A004EF41F /* Clouds@3x.png in Resources */,
 				F3A3DEFF1AE0DCEC008F92B7 /* tb_selected_background@2x.png in Resources */,
 				F3A3DEBF1AE0AB01008F92B7 /* tb_news_highlight@2x.png in Resources */,
 				F3A3DEF61AE0D9D8008F92B7 /* Default.png in Resources */,
@@ -583,6 +667,7 @@
 				F3A3DE9B1AE0A5D4008F92B7 /* Icon72.png in Resources */,
 				F37192051AF1FF5B00FAC85A /* 医疗护理@2x.png in Resources */,
 				F3A3DEBD1AE0AB01008F92B7 /* tb_found_highlight@2x.png in Resources */,
+				F369D6A11AFCC10A004EF41F /* Clouds.png in Resources */,
 				F3A3DEFE1AE0DCEC008F92B7 /* tb_normal_background@2x.png in Resources */,
 				F37192031AF1FF5B00FAC85A /* 健康饮食@2x.png in Resources */,
 				F3A3DEB81AE0AB01008F92B7 /* tb_me_highlight@2x.png in Resources */,
@@ -597,6 +682,7 @@
 				F371920C1AF1FF5B00FAC85A /* 男性健康@2x.png in Resources */,
 				F3AFD64E1AE8D4C700060172 /* refresh_sphere@2x.png in Resources */,
 				F3A3DEB91AE0AB01008F92B7 /* tb_reader_highlight@2x.png in Resources */,
+				F369D6A21AFCC10A004EF41F /* Clouds@2x.png in Resources */,
 				F3A3DEBA1AE0AB01008F92B7 /* tb_found_normal@2x.png in Resources */,
 				F3AFD64D1AE8D4C700060172 /* refresh_circle@2x.png in Resources */,
 				F3A3DE9C1AE0A5D4008F92B7 /* Icon@2x.png in Resources */,
@@ -647,15 +733,20 @@
 				F3A3DF261AE103A4008F92B7 /* AFInterfaceAPIExcute.m in Sources */,
 				F3B114A71AF087BA00E71AEF /* DVSwitch.m in Sources */,
 				F3A57CEA1AE78018008AA4CB /* HomeCell.m in Sources */,
+				F369D69A1AFCBEDE004EF41F /* UleSectionHeaderView.m in Sources */,
+				F369D6971AFCB87F004EF41F /* UleScrollView.m in Sources */,
 				F3A3DF1E1AE102E0008F92B7 /* NSArray+JSON.m in Sources */,
 				F3A3DF081AE0E1B1008F92B7 /* UserViewController.m in Sources */,
 				F3A3DE6F1AE09EDE008F92B7 /* AppDelegate.m in Sources */,
 				F37192121AF204BD00FAC85A /* DetailReadViewController.m in Sources */,
+				F37A847A1AFC948B00BEFD98 /* UIViewController+UleHiddenNavi.m in Sources */,
 				F3A3DF0E1AE0ECDC008F92B7 /* RefreshTableView.m in Sources */,
 				F3A3DEC21AE0B5B1008F92B7 /* BaseViewController.m in Sources */,
 				F3A3DF311AE10E71008F92B7 /* DetailNewsViewController.m in Sources */,
+				F37A847B1AFC948B00BEFD98 /* UleHiddenForScroller.m in Sources */,
 				F37192151AF2329600FAC85A /* FoodListViewController.m in Sources */,
 				F3B114AA1AF0880000E71AEF /* NSString+HXAddtions.m in Sources */,
+				F369D6941AFCB77F004EF41F /* UIScrollView+TwitterCover.m in Sources */,
 				F3A3DF021AE0E197008F92B7 /* ReadViewController.m in Sources */,
 				F3AFD65E1AE8FC2400060172 /* ScrollPageView.m in Sources */,
 				F37192181AF232A800FAC85A /* FoodDetailViewController.m in Sources */,
@@ -674,6 +765,7 @@
 				F3A3DEE91AE0D61B008F92B7 /* HomeViewController.m in Sources */,
 				F3A3DF151AE0FE2C008F92B7 /* AFRequestManager.m in Sources */,
 				F3A3DEE61AE0D589008F92B7 /* CustomerTabBarVC.m in Sources */,
+				F37A84791AFC948B00BEFD98 /* JRSwizzle.m in Sources */,
 				F3AFD6571AE8FB5900060172 /* SGFocusImageFrame.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

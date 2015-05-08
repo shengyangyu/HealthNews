@@ -42,19 +42,19 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HealthNews/ViewControllers/ReadViewController.m"
-            timestampString = "452079641.123362"
+            timestampString = "452772170.763146"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
-            landmarkName = "-requestTypeList"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
+            landmarkName = "-requestTypesList"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HealthNews/ViewControllers/FoodViewController.m"

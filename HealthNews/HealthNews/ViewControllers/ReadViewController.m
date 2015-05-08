@@ -11,6 +11,7 @@
 #import "RefreshTableView.h"
 #import "HomeCell.h"
 #import "DetailReadViewController.h"
+#import "UleSectionHeaderView.h"
 
 @interface ReadViewController ()<UIScrollViewDelegate,CustomerTableViewDelegate,UITableViewDataSource,UITableViewDelegate>
 {
@@ -255,7 +256,7 @@ apiDic;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    YSYSectionHeaderView *sectionHead = [[YSYSectionHeaderView alloc] init];
+    UleSectionHeaderView *sectionHead = [[UleSectionHeaderView alloc] init];
     sectionHead.section = section;
     sectionHead.tableView = tableView;
     ({
@@ -428,14 +429,6 @@ apiDic;
 
 
 
-@implementation YSYSectionHeaderView
-- (void)setFrame:(CGRect)frame {
-    self.backgroundColor = [UIColor groupTableViewBackgroundColor];
-    CGRect sectionRect = [self.tableView rectForSection:self.section];
-    CGRect newFrame = CGRectMake(CGRectGetMinX(frame), CGRectGetMinY(sectionRect), CGRectGetWidth(frame), CGRectGetHeight(frame));
-    [super setFrame:newFrame];
-    
-}
-@end
+
 
 

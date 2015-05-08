@@ -62,7 +62,7 @@
     {
         [[self navigationBar] setTintColor:nil];
     }
-    //[super viewWillAppear:animated];
+    [super viewWillAppear:animated];
 }
 
 - (UIModalPresentationStyle)modalPresentationStyle {
